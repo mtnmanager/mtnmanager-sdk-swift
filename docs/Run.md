@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, or unknown). | 
 **lastGroomed** | **Date** | When the run was last groomed.  &#x60;null&#x60; if never groomed, or if the runs grooming feature is disabled. | [optional] 
 **groomedToday** | **Bool** | Whether the run was groomed within the last 24 hours. | 
+**snowmaking** | **Bool** | Whether the run has snowmaking capabilities. | 
+**nightSkiing** | **Bool** | Whether the run is available for night skiing. | 
 **conditionNotes** | **String** | Notes about current conditions on this run. | 
 **areaUuid** | **String** | UUID of the area this run belongs to, if assigned. | [optional] 
 **areaName** | **String** | Name of the area this run belongs to, if assigned. | [optional] 

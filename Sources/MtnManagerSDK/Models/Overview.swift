@@ -30,6 +30,10 @@ public struct Overview: Sendable, Codable, Hashable {
     public var groomedRuns: Int64?
     /** Total number of runs at the resort. */
     public var totalRuns: Int64
+    /** Total acres of open runs.  Not included if acres are not tracked or run status feature is disabled. */
+    public var openAcres: Int64?
+    /** Total acres of all runs.  Not included if acres are not tracked. */
+    public var totalAcres: Int64?
     /** When the most recent update to run status was made. */
     public var runsUpdatedAt: Date
     /** Number of lifts currently open.  Not included if the lifts status feature is disabled. */
@@ -51,7 +55,7 @@ public struct Overview: Sendable, Codable, Hashable {
     /** When the most recent update to terrain park status was made. */
     public var terrainParksUpdatedAt: Date
 
-    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: String, newsHtml: String, newsUpdatedAt: Date, openRuns: Int64? = nil, groomedRuns: Int64? = nil, totalRuns: Int64, runsUpdatedAt: Date, openLifts: Int64? = nil, totalLifts: Int64, liftsUpdatedAt: Date, openSummerTrails: Int64? = nil, totalSummerTrails: Int64, summerTrailsUpdatedAt: Date, openTerrainParks: Int64? = nil, totalTerrainParks: Int64, terrainParksUpdatedAt: Date) {
+    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: String, newsHtml: String, newsUpdatedAt: Date, openRuns: Int64? = nil, groomedRuns: Int64? = nil, totalRuns: Int64, openAcres: Int64? = nil, totalAcres: Int64? = nil, runsUpdatedAt: Date, openLifts: Int64? = nil, totalLifts: Int64, liftsUpdatedAt: Date, openSummerTrails: Int64? = nil, totalSummerTrails: Int64, summerTrailsUpdatedAt: Date, openTerrainParks: Int64? = nil, totalTerrainParks: Int64, terrainParksUpdatedAt: Date) {
         self.status = status
         self.opensAt = opensAt
         self.closesAt = closesAt
@@ -62,6 +66,8 @@ public struct Overview: Sendable, Codable, Hashable {
         self.openRuns = openRuns
         self.groomedRuns = groomedRuns
         self.totalRuns = totalRuns
+        self.openAcres = openAcres
+        self.totalAcres = totalAcres
         self.runsUpdatedAt = runsUpdatedAt
         self.openLifts = openLifts
         self.totalLifts = totalLifts
@@ -85,6 +91,8 @@ public struct Overview: Sendable, Codable, Hashable {
         case openRuns = "open_runs"
         case groomedRuns = "groomed_runs"
         case totalRuns = "total_runs"
+        case openAcres = "open_acres"
+        case totalAcres = "total_acres"
         case runsUpdatedAt = "runs_updated_at"
         case openLifts = "open_lifts"
         case totalLifts = "total_lifts"
@@ -111,6 +119,8 @@ public struct Overview: Sendable, Codable, Hashable {
         try container.encodeIfPresent(openRuns, forKey: .openRuns)
         try container.encodeIfPresent(groomedRuns, forKey: .groomedRuns)
         try container.encode(totalRuns, forKey: .totalRuns)
+        try container.encodeIfPresent(openAcres, forKey: .openAcres)
+        try container.encodeIfPresent(totalAcres, forKey: .totalAcres)
         try container.encode(runsUpdatedAt, forKey: .runsUpdatedAt)
         try container.encodeIfPresent(openLifts, forKey: .openLifts)
         try container.encode(totalLifts, forKey: .totalLifts)

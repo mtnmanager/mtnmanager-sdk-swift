@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **lifts** | [Lift] | List of all lifts at the resort with their current operational status,  type, and optional wait time information. | 
 **runs** | [Run] | List of all runs at the resort with their current status,  grooming information, and difficulty rating. | 
 **terrainParks** | [TerrainPark] | List of all terrain parks at the resort with their current status,  condition notes, and list of features (jumps, boxes, rails, etc.) within them. | 
+**parkingLots** | [ParkingLot] | List of all parking lots at the resort with their current status and amenities. | 
 **summerTrails** | [SummerTrail] | List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. | 
 **hours** | [**OperatingHours**](OperatingHours.md) |  | 
 **weather** | [**Weather**](Weather.md) |  | [optional] 

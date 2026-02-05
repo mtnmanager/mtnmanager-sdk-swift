@@ -22,6 +22,10 @@ public struct Lift: Sendable, Codable, Hashable {
     public var liftType: LiftType
     /** Whether this is a high-speed/detachable lift. */
     public var highSpeed: Bool
+    /** Whether the lift has a bubble/cover for weather protection. */
+    public var bubble: Bool
+    /** Whether the lift has heated seats. */
+    public var heated: Bool
     /** Current operational status (open, closed, on_hold, or unknown). */
     public var status: LiftStatus
     /** Current estimated wait time in minutes, if available. */
@@ -35,13 +39,15 @@ public struct Lift: Sendable, Codable, Hashable {
     /** When this lift's information was last updated. */
     public var updatedAt: Date
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, status: LiftStatus, waitTimeMinutes: Int64? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, status: LiftStatus, waitTimeMinutes: Int64? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.number = number
         self.liftType = liftType
         self.highSpeed = highSpeed
+        self.bubble = bubble
+        self.heated = heated
         self.status = status
         self.waitTimeMinutes = waitTimeMinutes
         self.areaUuid = areaUuid
@@ -57,6 +63,8 @@ public struct Lift: Sendable, Codable, Hashable {
         case number
         case liftType = "lift_type"
         case highSpeed = "high_speed"
+        case bubble
+        case heated
         case status
         case waitTimeMinutes = "wait_time_minutes"
         case areaUuid = "area_uuid"
@@ -75,6 +83,8 @@ public struct Lift: Sendable, Codable, Hashable {
         try container.encodeIfPresent(number, forKey: .number)
         try container.encode(liftType, forKey: .liftType)
         try container.encode(highSpeed, forKey: .highSpeed)
+        try container.encode(bubble, forKey: .bubble)
+        try container.encode(heated, forKey: .heated)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(waitTimeMinutes, forKey: .waitTimeMinutes)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)

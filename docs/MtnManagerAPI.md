@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getHours**](MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 [**getLifts**](MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts
 [**getOverview**](MtnManagerAPI.md#getoverview) | **GET** /api/v1/report/overview | Get overview
+[**getParkingLots**](MtnManagerAPI.md#getparkinglots) | **GET** /api/v1/report/parking-lots | Get parking lots
 [**getRuns**](MtnManagerAPI.md#getruns) | **GET** /api/v1/report/runs | Get runs
 [**getSnow**](MtnManagerAPI.md#getsnow) | **GET** /api/v1/report/snow | Get snow conditions
 [**getSummerTrails**](MtnManagerAPI.md#getsummertrails) | **GET** /api/v1/report/summer-trails | Get summer trails
@@ -179,6 +180,50 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Overview**](Overview.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getParkingLots**
+```swift
+    open class func getParkingLots(completion: @escaping (_ data: [ParkingLot]?, _ error: Error?) -> Void)
+```
+
+Get parking lots
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+
+// Get parking lots
+MtnManagerAPI.getParkingLots() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[ParkingLot]**](ParkingLot.md)
 
 ### Authorization
 

@@ -26,6 +26,10 @@ public struct Run: Sendable, Codable, Hashable {
     public var lastGroomed: Date?
     /** Whether the run was groomed within the last 24 hours. */
     public var groomedToday: Bool
+    /** Whether the run has snowmaking capabilities. */
+    public var snowmaking: Bool
+    /** Whether the run is available for night skiing. */
+    public var nightSkiing: Bool
     /** Notes about current conditions on this run. */
     public var conditionNotes: String
     /** UUID of the area this run belongs to, if assigned. */
@@ -37,7 +41,7 @@ public struct Run: Sendable, Codable, Hashable {
     /** When this run's information was last updated. */
     public var updatedAt: Date
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, difficulty: RunDifficulty, status: RunStatus, lastGroomed: Date? = nil, groomedToday: Bool, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, difficulty: RunDifficulty, status: RunStatus, lastGroomed: Date? = nil, groomedToday: Bool, snowmaking: Bool, nightSkiing: Bool, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -46,6 +50,8 @@ public struct Run: Sendable, Codable, Hashable {
         self.status = status
         self.lastGroomed = lastGroomed
         self.groomedToday = groomedToday
+        self.snowmaking = snowmaking
+        self.nightSkiing = nightSkiing
         self.conditionNotes = conditionNotes
         self.areaUuid = areaUuid
         self.areaName = areaName
@@ -62,6 +68,8 @@ public struct Run: Sendable, Codable, Hashable {
         case status
         case lastGroomed = "last_groomed"
         case groomedToday = "groomed_today"
+        case snowmaking
+        case nightSkiing = "night_skiing"
         case conditionNotes = "condition_notes"
         case areaUuid = "area_uuid"
         case areaName = "area_name"
@@ -81,6 +89,8 @@ public struct Run: Sendable, Codable, Hashable {
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(lastGroomed, forKey: .lastGroomed)
         try container.encode(groomedToday, forKey: .groomedToday)
+        try container.encode(snowmaking, forKey: .snowmaking)
+        try container.encode(nightSkiing, forKey: .nightSkiing)
         try container.encode(conditionNotes, forKey: .conditionNotes)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
         try container.encodeIfPresent(areaName, forKey: .areaName)

@@ -20,18 +20,21 @@ public struct FullReport: Sendable, Codable, Hashable {
     public var runs: [Run]
     /** List of all terrain parks at the resort with their current status,  condition notes, and list of features (jumps, boxes, rails, etc.) within them. */
     public var terrainParks: [TerrainPark]
+    /** List of all parking lots at the resort with their current status and amenities. */
+    public var parkingLots: [ParkingLot]
     /** List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. */
     public var summerTrails: [SummerTrail]
     public var hours: OperatingHours
     public var weather: Weather?
 
-    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], summerTrails: [SummerTrail], hours: OperatingHours, weather: Weather? = nil) {
+    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: Weather? = nil) {
         self.resort = resort
         self.status = status
         self.snow = snow
         self.lifts = lifts
         self.runs = runs
         self.terrainParks = terrainParks
+        self.parkingLots = parkingLots
         self.summerTrails = summerTrails
         self.hours = hours
         self.weather = weather
@@ -44,6 +47,7 @@ public struct FullReport: Sendable, Codable, Hashable {
         case lifts
         case runs
         case terrainParks = "terrain_parks"
+        case parkingLots = "parking_lots"
         case summerTrails = "summer_trails"
         case hours
         case weather
@@ -59,6 +63,7 @@ public struct FullReport: Sendable, Codable, Hashable {
         try container.encode(lifts, forKey: .lifts)
         try container.encode(runs, forKey: .runs)
         try container.encode(terrainParks, forKey: .terrainParks)
+        try container.encode(parkingLots, forKey: .parkingLots)
         try container.encode(summerTrails, forKey: .summerTrails)
         try container.encode(hours, forKey: .hours)
         try container.encodeIfPresent(weather, forKey: .weather)

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **number** | **Int** | Optional lift number. | [optional] 
 **liftType** | [**LiftType**](LiftType.md) | Type of lift (e.g. gondola, quad). | 
 **highSpeed** | **Bool** | Whether this is a high-speed/detachable lift. | 
+**bubble** | **Bool** | Whether the lift has a bubble/cover for weather protection. | 
+**heated** | **Bool** | Whether the lift has heated seats. | 
 **status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **waitTimeMinutes** | **Int64** | Current estimated wait time in minutes, if available. | [optional] 
 **areaUuid** | **String** | UUID of the area this lift belongs to, if assigned. | [optional] 

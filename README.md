@@ -24,6 +24,7 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**getHours**](docs/MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 *MtnManagerAPI* | [**getLifts**](docs/MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts
 *MtnManagerAPI* | [**getOverview**](docs/MtnManagerAPI.md#getoverview) | **GET** /api/v1/report/overview | Get overview
+*MtnManagerAPI* | [**getParkingLots**](docs/MtnManagerAPI.md#getparkinglots) | **GET** /api/v1/report/parking-lots | Get parking lots
 *MtnManagerAPI* | [**getRuns**](docs/MtnManagerAPI.md#getruns) | **GET** /api/v1/report/runs | Get runs
 *MtnManagerAPI* | [**getSnow**](docs/MtnManagerAPI.md#getsnow) | **GET** /api/v1/report/snow | Get snow conditions
 *MtnManagerAPI* | [**getSummerTrails**](docs/MtnManagerAPI.md#getsummertrails) | **GET** /api/v1/report/summer-trails | Get summer trails
@@ -53,6 +54,8 @@ Class | Method | HTTP request | Description
  - [LiftType](docs/LiftType.md)
  - [OperatingHours](docs/OperatingHours.md)
  - [Overview](docs/Overview.md)
+ - [ParkingLot](docs/ParkingLot.md)
+ - [ParkingLotStatus](docs/ParkingLotStatus.md)
  - [ResortInfo](docs/ResortInfo.md)
  - [ResortStatus](docs/ResortStatus.md)
  - [Run](docs/Run.md)

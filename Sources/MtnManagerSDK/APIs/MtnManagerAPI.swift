@@ -150,6 +150,41 @@ open class MtnManagerAPI {
     }
 
     /**
+     Get parking lots
+     
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [ParkingLot]
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getParkingLots(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [ParkingLot] {
+        return try await getParkingLotsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get parking lots
+     - GET /api/v1/report/parking-lots
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[ParkingLot]> 
+     */
+    open class func getParkingLotsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[ParkingLot]> {
+        let localVariablePath = "/api/v1/report/parking-lots"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[ParkingLot]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get runs
      
      - parameter apiConfiguration: The configuration for the http request.
