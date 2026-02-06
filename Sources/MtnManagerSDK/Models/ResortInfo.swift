@@ -18,14 +18,17 @@ public struct ResortInfo: Sendable, Codable, Hashable {
     public var slug: String
     /** IANA timezone identifier for the resort's local time. */
     public var timezone: String
+    /** Region, affects difficulty icon style. */
+    public var region: Region
     /** Preferred unit system for measurements (metric or imperial). */
     public var unitPreference: UnitPreference
 
-    public init(uuid: String, name: String, slug: String, timezone: String, unitPreference: UnitPreference) {
+    public init(uuid: String, name: String, slug: String, timezone: String, region: Region, unitPreference: UnitPreference) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.timezone = timezone
+        self.region = region
         self.unitPreference = unitPreference
     }
 
@@ -34,6 +37,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         case name
         case slug
         case timezone
+        case region
         case unitPreference = "unit_preference"
     }
 
@@ -45,6 +49,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(slug, forKey: .slug)
         try container.encode(timezone, forKey: .timezone)
+        try container.encode(region, forKey: .region)
         try container.encode(unitPreference, forKey: .unitPreference)
     }
 }
