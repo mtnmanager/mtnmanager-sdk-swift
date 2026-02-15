@@ -25,8 +25,10 @@ public struct CalendarDay: Sendable, Codable, Hashable {
     public var closureReason: ClosureReason?
     /** Special event for this day. */
     public var specialEvent: String?
+    /** Per-amenity hours for this day. Only included when amenity hours are configured. */
+    public var amenities: [AmenityCalendarEntry]
 
-    public init(date: Date, dayOfWeek: DayOfWeek, isOpen: Bool, opensAt: String? = nil, closesAt: String? = nil, closureReason: ClosureReason? = nil, specialEvent: String? = nil) {
+    public init(date: Date, dayOfWeek: DayOfWeek, isOpen: Bool, opensAt: String? = nil, closesAt: String? = nil, closureReason: ClosureReason? = nil, specialEvent: String? = nil, amenities: [AmenityCalendarEntry]) {
         self.date = date
         self.dayOfWeek = dayOfWeek
         self.isOpen = isOpen
@@ -34,6 +36,7 @@ public struct CalendarDay: Sendable, Codable, Hashable {
         self.closesAt = closesAt
         self.closureReason = closureReason
         self.specialEvent = specialEvent
+        self.amenities = amenities
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +47,7 @@ public struct CalendarDay: Sendable, Codable, Hashable {
         case closesAt = "closes_at"
         case closureReason = "closure_reason"
         case specialEvent = "special_event"
+        case amenities
     }
 
     // Encodable protocol methods
@@ -57,6 +61,7 @@ public struct CalendarDay: Sendable, Codable, Hashable {
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encodeIfPresent(closureReason, forKey: .closureReason)
         try container.encodeIfPresent(specialEvent, forKey: .specialEvent)
+        try container.encode(amenities, forKey: .amenities)
     }
 }
 

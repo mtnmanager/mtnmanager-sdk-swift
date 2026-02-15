@@ -14,15 +14,19 @@ public struct OperatingHours: Sendable, Codable, Hashable {
     public var schedules: [Schedule]
     /** List of all days the resort is open (or a closure override).  Ordered chronologically, spanning from the earliest scheduled date  to the latest scheduled date in the currently defined operating hours. */
     public var calendarDays: [CalendarDay]
+    /** Per-amenity operating schedules. Only included when amenity hours are configured. */
+    public var amenitySchedules: [AmenitySchedule]
 
-    public init(schedules: [Schedule], calendarDays: [CalendarDay]) {
+    public init(schedules: [Schedule], calendarDays: [CalendarDay], amenitySchedules: [AmenitySchedule]) {
         self.schedules = schedules
         self.calendarDays = calendarDays
+        self.amenitySchedules = amenitySchedules
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case schedules
         case calendarDays = "calendar_days"
+        case amenitySchedules = "amenity_schedules"
     }
 
     // Encodable protocol methods
@@ -31,6 +35,7 @@ public struct OperatingHours: Sendable, Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(schedules, forKey: .schedules)
         try container.encode(calendarDays, forKey: .calendarDays)
+        try container.encode(amenitySchedules, forKey: .amenitySchedules)
     }
 }
 

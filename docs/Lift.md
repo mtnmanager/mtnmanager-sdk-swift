@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **heated** | **Bool** | Whether the lift has heated seats. | 
 **status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **waitTimeMinutes** | **Int64** | Current estimated wait time in minutes, if available. | [optional] 
+**opensAt** | **String** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
+**closesAt** | **String** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **areaUuid** | **String** | UUID of the area this lift belongs to, if assigned. | [optional] 
 **areaName** | **String** | Name of the area this lift belongs to, if assigned. | [optional] 
 **areaDisplayOrder** | **Int** | Display order of the area this lift belongs to, if assigned, for sorting purposes. | [optional] 

@@ -30,6 +30,10 @@ public struct Lift: Sendable, Codable, Hashable {
     public var status: LiftStatus
     /** Current estimated wait time in minutes, if available. */
     public var waitTimeMinutes: Int64?
+    /** Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today. */
+    public var opensAt: String?
+    /** Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today. */
+    public var closesAt: String?
     /** UUID of the area this lift belongs to, if assigned. */
     public var areaUuid: String?
     /** Name of the area this lift belongs to, if assigned. */
@@ -39,7 +43,7 @@ public struct Lift: Sendable, Codable, Hashable {
     /** When this lift's information was last updated. */
     public var updatedAt: Date
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, status: LiftStatus, waitTimeMinutes: Int64? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -50,6 +54,8 @@ public struct Lift: Sendable, Codable, Hashable {
         self.heated = heated
         self.status = status
         self.waitTimeMinutes = waitTimeMinutes
+        self.opensAt = opensAt
+        self.closesAt = closesAt
         self.areaUuid = areaUuid
         self.areaName = areaName
         self.areaDisplayOrder = areaDisplayOrder
@@ -67,6 +73,8 @@ public struct Lift: Sendable, Codable, Hashable {
         case heated
         case status
         case waitTimeMinutes = "wait_time_minutes"
+        case opensAt = "opens_at"
+        case closesAt = "closes_at"
         case areaUuid = "area_uuid"
         case areaName = "area_name"
         case areaDisplayOrder = "area_display_order"
@@ -87,6 +95,8 @@ public struct Lift: Sendable, Codable, Hashable {
         try container.encode(heated, forKey: .heated)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(waitTimeMinutes, forKey: .waitTimeMinutes)
+        try container.encodeIfPresent(opensAt, forKey: .opensAt)
+        try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
         try container.encodeIfPresent(areaName, forKey: .areaName)
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
