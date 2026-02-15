@@ -26,9 +26,9 @@ public struct CalendarDay: Sendable, Codable, Hashable {
     /** Special event for this day. */
     public var specialEvent: String?
     /** Per-amenity hours for this day. Only included when amenity hours are configured. */
-    public var amenities: [AmenityCalendarEntry]
+    public var amenities: [AmenityCalendarEntry]?
 
-    public init(date: Date, dayOfWeek: DayOfWeek, isOpen: Bool, opensAt: String? = nil, closesAt: String? = nil, closureReason: ClosureReason? = nil, specialEvent: String? = nil, amenities: [AmenityCalendarEntry]) {
+    public init(date: Date, dayOfWeek: DayOfWeek, isOpen: Bool, opensAt: String? = nil, closesAt: String? = nil, closureReason: ClosureReason? = nil, specialEvent: String? = nil, amenities: [AmenityCalendarEntry]? = nil) {
         self.date = date
         self.dayOfWeek = dayOfWeek
         self.isOpen = isOpen
@@ -61,7 +61,7 @@ public struct CalendarDay: Sendable, Codable, Hashable {
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encodeIfPresent(closureReason, forKey: .closureReason)
         try container.encodeIfPresent(specialEvent, forKey: .specialEvent)
-        try container.encode(amenities, forKey: .amenities)
+        try container.encodeIfPresent(amenities, forKey: .amenities)
     }
 }
 
