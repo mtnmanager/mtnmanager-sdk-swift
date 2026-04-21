@@ -59,3 +59,10 @@ public struct CurrentWeather: Sendable, Codable, Hashable {
     }
 }
 
+
+extension CurrentWeather: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if conditionCode == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

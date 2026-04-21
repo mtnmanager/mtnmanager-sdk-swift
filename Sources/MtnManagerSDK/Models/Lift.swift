@@ -26,6 +26,16 @@ public struct Lift: Sendable, Codable, Hashable {
     public var bubble: Bool
     /** Whether the lift has heated seats. */
     public var heated: Bool
+    /** Estimated travel time in minutes. */
+    public var travelTime: Double?
+    /** Length of the lift in feet. */
+    public var lengthFt: Int?
+    /** Length of the lift in meters. */
+    public var lengthM: Int?
+    /** Vertical rise of the lift in feet. */
+    public var verticalRiseFt: Int?
+    /** Vertical rise of the lift in meters. */
+    public var verticalRiseM: Int?
     /** Current operational status (open, closed, on_hold, or unknown). */
     public var status: LiftStatus
     /** Current estimated wait time in minutes, if available. */
@@ -43,7 +53,7 @@ public struct Lift: Sendable, Codable, Hashable {
     /** When this lift's information was last updated. */
     public var updatedAt: Date
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, travelTime: Double? = nil, lengthFt: Int? = nil, lengthM: Int? = nil, verticalRiseFt: Int? = nil, verticalRiseM: Int? = nil, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -52,6 +62,11 @@ public struct Lift: Sendable, Codable, Hashable {
         self.highSpeed = highSpeed
         self.bubble = bubble
         self.heated = heated
+        self.travelTime = travelTime
+        self.lengthFt = lengthFt
+        self.lengthM = lengthM
+        self.verticalRiseFt = verticalRiseFt
+        self.verticalRiseM = verticalRiseM
         self.status = status
         self.waitTimeMinutes = waitTimeMinutes
         self.opensAt = opensAt
@@ -71,6 +86,11 @@ public struct Lift: Sendable, Codable, Hashable {
         case highSpeed = "high_speed"
         case bubble
         case heated
+        case travelTime = "travel_time"
+        case lengthFt = "length_ft"
+        case lengthM = "length_m"
+        case verticalRiseFt = "vertical_rise_ft"
+        case verticalRiseM = "vertical_rise_m"
         case status
         case waitTimeMinutes = "wait_time_minutes"
         case opensAt = "opens_at"
@@ -93,6 +113,11 @@ public struct Lift: Sendable, Codable, Hashable {
         try container.encode(highSpeed, forKey: .highSpeed)
         try container.encode(bubble, forKey: .bubble)
         try container.encode(heated, forKey: .heated)
+        try container.encodeIfPresent(travelTime, forKey: .travelTime)
+        try container.encodeIfPresent(lengthFt, forKey: .lengthFt)
+        try container.encodeIfPresent(lengthM, forKey: .lengthM)
+        try container.encodeIfPresent(verticalRiseFt, forKey: .verticalRiseFt)
+        try container.encodeIfPresent(verticalRiseM, forKey: .verticalRiseM)
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(waitTimeMinutes, forKey: .waitTimeMinutes)
         try container.encodeIfPresent(opensAt, forKey: .opensAt)
@@ -104,3 +129,11 @@ public struct Lift: Sendable, Codable, Hashable {
     }
 }
 
+
+extension Lift: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if liftType == .unknownDefaultOpenApi { return true }
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

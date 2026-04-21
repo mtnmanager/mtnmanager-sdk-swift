@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**getSnow**](MtnManagerAPI.md#getsnow) | **GET** /api/v1/report/snow | Get snow conditions
 [**getSummerTrails**](MtnManagerAPI.md#getsummertrails) | **GET** /api/v1/report/summer-trails | Get summer trails
 [**getTerrainParks**](MtnManagerAPI.md#getterrainparks) | **GET** /api/v1/report/terrain-parks | Get terrain parks
+[**getTrailMap**](MtnManagerAPI.md#gettrailmap) | **GET** /api/v1/report/trail-map/{uuid} | Get trail map
+[**getTrailMaps**](MtnManagerAPI.md#gettrailmaps) | **GET** /api/v1/report/trail-maps | Get trail maps
 [**getWeather**](MtnManagerAPI.md#getweather) | **GET** /api/v1/report/weather | Get weather
 
 
@@ -400,6 +402,98 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[TerrainPark]**](TerrainPark.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTrailMap**
+```swift
+    open class func getTrailMap(uuid: String, completion: @escaping (_ data: TrailMap?, _ error: Error?) -> Void)
+```
+
+Get trail map
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+let uuid = "uuid_example" // String | Resource UUID
+
+// Get trail map
+MtnManagerAPI.getTrailMap(uuid: uuid) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **String** | Resource UUID | 
+
+### Return type
+
+[**TrailMap**](TrailMap.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTrailMaps**
+```swift
+    open class func getTrailMaps(completion: @escaping (_ data: [TrailMapSummary]?, _ error: Error?) -> Void)
+```
+
+Get trail maps
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+
+// Get trail maps
+MtnManagerAPI.getTrailMaps() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[TrailMapSummary]**](TrailMapSummary.md)
 
 ### Authorization
 

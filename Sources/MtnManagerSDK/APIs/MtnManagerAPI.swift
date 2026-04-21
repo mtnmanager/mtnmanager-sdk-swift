@@ -15,7 +15,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: FullReport
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getFullReport(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> FullReport {
         return try await getFullReportWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -50,7 +49,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: OperatingHours
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getHours(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> OperatingHours {
         return try await getHoursWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -85,7 +83,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Lift]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getLifts(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Lift] {
         return try await getLiftsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -120,7 +117,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Overview
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getOverview(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Overview {
         return try await getOverviewWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -155,7 +151,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [ParkingLot]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getParkingLots(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [ParkingLot] {
         return try await getParkingLotsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -190,7 +185,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Run]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getRuns(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Run] {
         return try await getRunsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -225,7 +219,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SnowReport]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getSnow(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SnowReport] {
         return try await getSnowWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -260,7 +253,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SummerTrail]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getSummerTrails(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SummerTrail] {
         return try await getSummerTrailsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -295,7 +287,6 @@ open class MtnManagerAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [TerrainPark]
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getTerrainParks(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TerrainPark] {
         return try await getTerrainParksWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
@@ -325,12 +316,84 @@ open class MtnManagerAPI {
     }
 
     /**
+     Get trail map
+     
+     - parameter uuid: (path) Resource UUID 
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: TrailMap
+     */
+    open class func getTrailMap(uuid: String, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> TrailMap {
+        return try await getTrailMapWithRequestBuilder(uuid: uuid, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get trail map
+     - GET /api/v1/report/trail-map/{uuid}
+     - parameter uuid: (path) Resource UUID 
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<TrailMap> 
+     */
+    open class func getTrailMapWithRequestBuilder(uuid: String, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<TrailMap> {
+        var localVariablePath = "/api/v1/report/trail-map/{uuid}"
+        let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
+        let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{uuid}", with: uuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TrailMap>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Get trail maps
+     
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [TrailMapSummary]
+     */
+    open class func getTrailMaps(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TrailMapSummary] {
+        return try await getTrailMapsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get trail maps
+     - GET /api/v1/report/trail-maps
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[TrailMapSummary]> 
+     */
+    open class func getTrailMapsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[TrailMapSummary]> {
+        let localVariablePath = "/api/v1/report/trail-maps"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[TrailMapSummary]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get weather
      
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Weather
      */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     open class func getWeather(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Weather {
         return try await getWeatherWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }

@@ -8,9 +8,16 @@
 import Foundation
 
 /** Difficulty rating for a summer trail. */
-public enum SummerTrailDifficulty: String, Sendable, Codable, CaseIterable {
+public enum SummerTrailDifficulty: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case beginner = "beginner"
     case intermediate = "intermediate"
     case advanced = "advanced"
     case expert = "expert"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension SummerTrailDifficulty: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

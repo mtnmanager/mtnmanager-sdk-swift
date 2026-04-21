@@ -22,6 +22,7 @@ public struct CalendarDay: Sendable, Codable, Hashable {
     public var opensAt: String?
     /** Closing time in 24-hour format (HH:MM), in resort's local timezone.  `null` if closed on this day. */
     public var closesAt: String?
+    /** Optional reason code for closure. */
     public var closureReason: ClosureReason?
     /** Special event for this day. */
     public var specialEvent: String?
@@ -65,3 +66,11 @@ public struct CalendarDay: Sendable, Codable, Hashable {
     }
 }
 
+
+extension CalendarDay: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if dayOfWeek == .unknownDefaultOpenApi { return true }
+        if closureReason == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

@@ -54,3 +54,11 @@ public struct ResortInfo: Sendable, Codable, Hashable {
     }
 }
 
+
+extension ResortInfo: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if region == .unknownDefaultOpenApi { return true }
+        if unitPreference == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

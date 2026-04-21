@@ -8,9 +8,25 @@
 import Foundation
 
 /** Category classification for amenities */
-public enum AmenityCategory: String, Sendable, Codable, CaseIterable {
-    case foodBeverage = "food_beverage"
+public enum AmenityCategory: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
+    case restaurant = "restaurant"
+    case coffee = "coffee"
+    case bar = "bar"
+    case tubing = "tubing"
+    case skiSchool = "ski_school"
+    case rentalShop = "rental_shop"
+    case daycare = "daycare"
+    case ticketing = "ticketing"
+    case lodge = "lodge"
+    case hotel = "hotel"
+    case lockers = "lockers"
     case retail = "retail"
-    case recreation = "recreation"
-    case facility = "facility"
+    case other = "other"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension AmenityCategory: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

@@ -8,8 +8,15 @@
 import Foundation
 
 /** Operational status of a summer trail. */
-public enum SummerTrailStatus: String, Sendable, Codable, CaseIterable {
+public enum SummerTrailStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
     case unknown = "unknown"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension SummerTrailStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 /** Type of ski lift */
-public enum LiftType: String, Sendable, Codable, CaseIterable {
+public enum LiftType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case gondola = "gondola"
     case tram = "tram"
     case eightPack = "eight_pack"
@@ -22,4 +22,11 @@ public enum LiftType: String, Sendable, Codable, CaseIterable {
     case ropeTow = "rope_tow"
     case funicular = "funicular"
     case other = "other"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension LiftType: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

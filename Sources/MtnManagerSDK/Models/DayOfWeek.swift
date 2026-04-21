@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DayOfWeek: String, Sendable, Codable, CaseIterable {
+public enum DayOfWeek: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case sunday = "Sunday"
     case monday = "Monday"
     case tuesday = "Tuesday"
@@ -15,4 +15,11 @@ public enum DayOfWeek: String, Sendable, Codable, CaseIterable {
     case thursday = "Thursday"
     case friday = "Friday"
     case saturday = "Saturday"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension DayOfWeek: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

@@ -79,3 +79,10 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     }
 }
 
+
+extension TerrainPark: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

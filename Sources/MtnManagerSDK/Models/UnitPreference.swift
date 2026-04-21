@@ -8,7 +8,14 @@
 import Foundation
 
 /** Unit preference (cm/in, km/miles, etc.) */
-public enum UnitPreference: String, Sendable, Codable, CaseIterable {
+public enum UnitPreference: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case metric = "metric"
     case imperial = "imperial"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension UnitPreference: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

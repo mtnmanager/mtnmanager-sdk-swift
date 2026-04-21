@@ -8,10 +8,17 @@
 import Foundation
 
 /** Difficulty rating for a ski run. */
-public enum RunDifficulty: String, Sendable, Codable, CaseIterable {
+public enum RunDifficulty: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case beginner = "beginner"
     case intermediate = "intermediate"
     case advanced = "advanced"
     case expert = "expert"
     case terrainPark = "terrain_park"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension RunDifficulty: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

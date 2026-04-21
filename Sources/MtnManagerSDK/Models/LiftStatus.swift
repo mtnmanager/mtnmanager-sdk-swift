@@ -8,9 +8,16 @@
 import Foundation
 
 /** Operational status of a ski lift. */
-public enum LiftStatus: String, Sendable, Codable, CaseIterable {
+public enum LiftStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
     case onHold = "on_hold"
     case unknown = "unknown"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension LiftStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

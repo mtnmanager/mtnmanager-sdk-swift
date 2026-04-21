@@ -7,7 +7,14 @@
 
 import Foundation
 
-public enum SummerTrailType: String, Sendable, Codable, CaseIterable {
+public enum SummerTrailType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case hiking = "hiking"
     case mountainBiking = "mountain_biking"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension SummerTrailType: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

@@ -8,8 +8,15 @@
 import Foundation
 
 /** Operational status of a parking lot. */
-public enum ParkingLotStatus: String, Sendable, Codable, CaseIterable {
+public enum ParkingLotStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
     case full = "full"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension ParkingLotStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

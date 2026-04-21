@@ -20,6 +20,7 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
     public var number: Int?
     /** Type of feature (jump, box, rail, other). */
     public var featureType: FeatureType
+    /** Optional size rating of the feature (S, M, L, XL). */
     public var size: FeatureSize?
     /** Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled. */
     public var status: TerrainParkFeatureStatus
@@ -58,3 +59,12 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
     }
 }
 
+
+extension TerrainParkFeature: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if featureType == .unknownDefaultOpenApi { return true }
+        if size == .unknownDefaultOpenApi { return true }
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

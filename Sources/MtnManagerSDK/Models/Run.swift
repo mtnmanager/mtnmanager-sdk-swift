@@ -99,3 +99,11 @@ public struct Run: Sendable, Codable, Hashable {
     }
 }
 
+
+extension Run: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if difficulty == .unknownDefaultOpenApi { return true }
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

@@ -64,3 +64,10 @@ public struct DailyForecast: Sendable, Codable, Hashable {
     }
 }
 
+
+extension DailyForecast: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if conditionCode == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

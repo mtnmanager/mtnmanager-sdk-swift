@@ -49,3 +49,10 @@ public struct AmenityCalendarEntry: Sendable, Codable, Hashable {
     }
 }
 
+
+extension AmenityCalendarEntry: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if category == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

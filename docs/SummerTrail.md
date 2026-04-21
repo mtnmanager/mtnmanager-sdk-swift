@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **slug** | **String** | URL-friendly name of the trail. | 
 **number** | **Int** | Optional trail number. | [optional] 
 **trailType** | [SummerTrailType] | Type of trail activity (e.g. hiking, mountain_biking). Can have multiple. | 
-**difficulty** | [**SummerTrailDifficulty**](SummerTrailDifficulty.md) |  | [optional] 
+**difficulty** | [**SummerTrailDifficulty**](SummerTrailDifficulty.md) | Difficulty rating of the trail (optional for summer trails). | [optional] 
 **status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, or unknown). | 
 **conditionNotes** | **String** | Notes about current conditions on this trail. | 
 **areaUuid** | **String** | UUID of the area this trail belongs to, if assigned. | [optional] 

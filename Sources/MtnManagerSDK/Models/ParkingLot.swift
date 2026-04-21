@@ -69,3 +69,10 @@ public struct ParkingLot: Sendable, Codable, Hashable {
     }
 }
 
+
+extension ParkingLot: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

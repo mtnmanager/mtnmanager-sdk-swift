@@ -8,9 +8,16 @@
 import Foundation
 
 /** Type of terrain park feature. */
-public enum FeatureType: String, Sendable, Codable, CaseIterable {
+public enum FeatureType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case jump = "jump"
     case box = "box"
     case rail = "rail"
     case other = "other"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension FeatureType: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

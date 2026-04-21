@@ -8,9 +8,16 @@
 import Foundation
 
 /** Size rating of terrain park feature. */
-public enum FeatureSize: String, Sendable, Codable, CaseIterable {
+public enum FeatureSize: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case s = "s"
     case m = "m"
     case l = "l"
     case xl = "xl"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension FeatureSize: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

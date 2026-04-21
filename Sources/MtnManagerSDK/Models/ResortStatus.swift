@@ -8,7 +8,14 @@
 import Foundation
 
 /** Current operational status of the resort. */
-public enum ResortStatus: String, Sendable, Codable, CaseIterable {
+public enum ResortStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension ResortStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

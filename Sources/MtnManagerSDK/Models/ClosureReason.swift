@@ -8,9 +8,16 @@
 import Foundation
 
 /** Reason for unexpected closure */
-public enum ClosureReason: String, Sendable, Codable, CaseIterable {
+public enum ClosureReason: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case extremeCold = "extreme_cold"
     case highWinds = "high_winds"
     case snowConditions = "snow_conditions"
     case mechanicalIssues = "mechanical_issues"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension ClosureReason: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

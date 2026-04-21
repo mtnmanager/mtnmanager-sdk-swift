@@ -22,7 +22,9 @@ public struct SnowReport: Sendable, Codable, Hashable {
     public var baseDepthCm: Int?
     /** Current base depth in inches.  Not included if the base depth feature is disabled. */
     public var baseDepthIn: Int?
+    /** Primary surface condition using industry standard codes.  Not included if the snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) */
     public var surfaceCondition: SurfaceCondition?
+    /** Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) */
     public var secondarySurfaceCondition: SurfaceCondition?
     /** Additional notes about current snow conditions, e.g. groomer's notes */
     public var conditionNotes: String
@@ -82,3 +84,11 @@ public struct SnowReport: Sendable, Codable, Hashable {
     }
 }
 
+
+extension SnowReport: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if surfaceCondition == .unknownDefaultOpenApi { return true }
+        if secondarySurfaceCondition == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

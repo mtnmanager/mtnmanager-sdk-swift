@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **isOpen** | **Bool** | Whether the resort is open on this day. | 
 **opensAt** | **String** | Opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
 **closesAt** | **String** | Closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
-**closureReason** | [**ClosureReason**](ClosureReason.md) |  | [optional] 
+**closureReason** | [**ClosureReason**](ClosureReason.md) | Optional reason code for closure. | [optional] 
 **specialEvent** | **String** | Special event for this day. | [optional] 
 **amenities** | [AmenityCalendarEntry] | Per-amenity hours for this day. Only included when amenity hours are configured. | [optional] 
 

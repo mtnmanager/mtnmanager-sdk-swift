@@ -8,7 +8,7 @@
 import Foundation
 
 /** Industry-standard letter codes describing snow surface conditions. */
-public enum SurfaceCondition: String, Sendable, Codable, CaseIterable {
+public enum SurfaceCondition: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case bs = "BS"
     case co = "CO"
     case fg = "FG"
@@ -24,4 +24,11 @@ public enum SurfaceCondition: String, Sendable, Codable, CaseIterable {
     case v = "V"
     case wg = "WG"
     case wp = "WP"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension SurfaceCondition: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

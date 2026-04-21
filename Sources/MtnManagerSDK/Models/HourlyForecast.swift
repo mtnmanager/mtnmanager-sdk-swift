@@ -54,3 +54,10 @@ public struct HourlyForecast: Sendable, Codable, Hashable {
     }
 }
 
+
+extension HourlyForecast: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if conditionCode == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

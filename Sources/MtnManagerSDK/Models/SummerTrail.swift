@@ -20,6 +20,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     public var number: Int?
     /** Type of trail activity (e.g. hiking, mountain_biking). Can have multiple. */
     public var trailType: [SummerTrailType]
+    /** Difficulty rating of the trail (optional for summer trails). */
     public var difficulty: SummerTrailDifficulty?
     /** Current operational status (open, closed, or unknown). */
     public var status: SummerTrailStatus
@@ -83,3 +84,11 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     }
 }
 
+
+extension SummerTrail: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if difficulty == .unknownDefaultOpenApi { return true }
+        if status == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}

@@ -8,7 +8,14 @@
 import Foundation
 
 /** Region for an account */
-public enum Region: String, Sendable, Codable, CaseIterable {
+public enum Region: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case na = "na"
     case eu = "eu"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension Region: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

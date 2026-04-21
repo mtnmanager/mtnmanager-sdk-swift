@@ -8,8 +8,15 @@
 import Foundation
 
 /** Operational status of a ski run. */
-public enum RunStatus: String, Sendable, Codable, CaseIterable {
+public enum RunStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
     case unknown = "unknown"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension RunStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

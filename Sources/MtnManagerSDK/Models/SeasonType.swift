@@ -8,8 +8,15 @@
 import Foundation
 
 /** Current operating season of the resort. */
-public enum SeasonType: String, Sendable, Codable, CaseIterable {
+public enum SeasonType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case winter = "winter"
     case summer = "summer"
     case closed = "closed"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension SeasonType: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

@@ -8,8 +8,15 @@
 import Foundation
 
 /** Operational status of a terrain park. */
-public enum TerrainParkStatus: String, Sendable, Codable, CaseIterable {
+public enum TerrainParkStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
     case unknown = "unknown"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension TerrainParkStatus: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }

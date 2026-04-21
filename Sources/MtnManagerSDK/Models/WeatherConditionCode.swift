@@ -8,7 +8,7 @@
 import Foundation
 
 /** Weather condition code */
-public enum WeatherConditionCode: String, Sendable, Codable, CaseIterable {
+public enum WeatherConditionCode: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case clear = "Clear"
     case mostlyClear = "MostlyClear"
     case partlyCloudy = "PartlyCloudy"
@@ -50,4 +50,11 @@ public enum WeatherConditionCode: String, Sendable, Codable, CaseIterable {
     case tropicalStorm = "TropicalStorm"
     case hot = "Hot"
     case unknown = "Unknown"
+    case unknownDefaultOpenApi = "unknown_default_open_api"
+}
+
+extension WeatherConditionCode: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        self == .unknownDefaultOpenApi
+    }
 }
