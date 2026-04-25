@@ -73,6 +73,7 @@ public struct Overview: Sendable, Codable, Hashable {
 extension Overview: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if status == .unknownDefaultOpenApi { return true }
+        if season == .unknownDefaultOpenApi { return true }
         return false
     }
 }

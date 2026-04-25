@@ -44,3 +44,10 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
     }
 }
 
+
+extension TrailMapSummary: UnknownCaseCheckable {
+    public var containsUnknownDefaultOpenApiCase: Bool {
+        if season == .unknownDefaultOpenApi { return true }
+        return false
+    }
+}
