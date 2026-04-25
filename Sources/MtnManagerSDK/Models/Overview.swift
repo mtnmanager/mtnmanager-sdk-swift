@@ -18,66 +18,27 @@ public struct Overview: Sendable, Codable, Hashable {
     public var closesAt: String?
     /** Current operating season (winter, summer, or closed/off-season). */
     public var season: SeasonType
-    /** Written news — daily update, announcements, etc. (Markdown source). */
-    public var news: String
-    /** Written news — daily update, announcements, etc. (rendered as HTML from Markdown). */
-    public var newsHtml: String
-    /** When the written news was last updated. */
-    public var newsUpdatedAt: Date
-    /** Number of runs currently open.  Not included if the runs status feature is disabled. */
-    public var openRuns: Int64?
-    /** Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled. */
-    public var groomedRuns: Int64?
-    /** Total number of runs at the resort. */
-    public var totalRuns: Int64
-    /** Total acres of open runs.  Not included if acres are not tracked or run status feature is disabled. */
-    public var openAcres: Int64?
-    /** Total acres of all runs.  Not included if acres are not tracked. */
-    public var totalAcres: Int64?
-    /** When the most recent update to run status was made. */
-    public var runsUpdatedAt: Date
-    /** Number of lifts currently open.  Not included if the lifts status feature is disabled. */
-    public var openLifts: Int64?
-    /** Total number of lifts at the resort. */
-    public var totalLifts: Int64
-    /** When the most recent update to lift status was made. */
-    public var liftsUpdatedAt: Date
-    /** Number of summer trails currently open.  Not included if the summer trails status feature is disabled. */
-    public var openSummerTrails: Int64?
-    /** Total number of summer trails at the resort. */
-    public var totalSummerTrails: Int64
-    /** When the most recent update to summer trail status was made. */
-    public var summerTrailsUpdatedAt: Date
-    /** Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled. */
-    public var openTerrainParks: Int64?
-    /** Total number of terrain parks at the resort. */
-    public var totalTerrainParks: Int64
-    /** When the most recent update to terrain park status was made. */
-    public var terrainParksUpdatedAt: Date
+    /** Written news — daily update, announcements, etc. */
+    public var news: OverviewNews
+    /** Run statistics: counts, acres, and last-updated timestamp. */
+    public var runs: OverviewRuns
+    /** Lift statistics: counts and last-updated timestamp. */
+    public var lifts: OverviewLifts
+    /** Summer trail statistics: counts and last-updated timestamp. */
+    public var summerTrails: OverviewSummerTrails
+    /** Terrain park statistics: counts and last-updated timestamp. */
+    public var terrainParks: OverviewTerrainParks
 
-    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: String, newsHtml: String, newsUpdatedAt: Date, openRuns: Int64? = nil, groomedRuns: Int64? = nil, totalRuns: Int64, openAcres: Int64? = nil, totalAcres: Int64? = nil, runsUpdatedAt: Date, openLifts: Int64? = nil, totalLifts: Int64, liftsUpdatedAt: Date, openSummerTrails: Int64? = nil, totalSummerTrails: Int64, summerTrailsUpdatedAt: Date, openTerrainParks: Int64? = nil, totalTerrainParks: Int64, terrainParksUpdatedAt: Date) {
+    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: OverviewNews, runs: OverviewRuns, lifts: OverviewLifts, summerTrails: OverviewSummerTrails, terrainParks: OverviewTerrainParks) {
         self.status = status
         self.opensAt = opensAt
         self.closesAt = closesAt
         self.season = season
         self.news = news
-        self.newsHtml = newsHtml
-        self.newsUpdatedAt = newsUpdatedAt
-        self.openRuns = openRuns
-        self.groomedRuns = groomedRuns
-        self.totalRuns = totalRuns
-        self.openAcres = openAcres
-        self.totalAcres = totalAcres
-        self.runsUpdatedAt = runsUpdatedAt
-        self.openLifts = openLifts
-        self.totalLifts = totalLifts
-        self.liftsUpdatedAt = liftsUpdatedAt
-        self.openSummerTrails = openSummerTrails
-        self.totalSummerTrails = totalSummerTrails
-        self.summerTrailsUpdatedAt = summerTrailsUpdatedAt
-        self.openTerrainParks = openTerrainParks
-        self.totalTerrainParks = totalTerrainParks
-        self.terrainParksUpdatedAt = terrainParksUpdatedAt
+        self.runs = runs
+        self.lifts = lifts
+        self.summerTrails = summerTrails
+        self.terrainParks = terrainParks
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -86,23 +47,10 @@ public struct Overview: Sendable, Codable, Hashable {
         case closesAt = "closes_at"
         case season
         case news
-        case newsHtml = "news_html"
-        case newsUpdatedAt = "news_updated_at"
-        case openRuns = "open_runs"
-        case groomedRuns = "groomed_runs"
-        case totalRuns = "total_runs"
-        case openAcres = "open_acres"
-        case totalAcres = "total_acres"
-        case runsUpdatedAt = "runs_updated_at"
-        case openLifts = "open_lifts"
-        case totalLifts = "total_lifts"
-        case liftsUpdatedAt = "lifts_updated_at"
-        case openSummerTrails = "open_summer_trails"
-        case totalSummerTrails = "total_summer_trails"
-        case summerTrailsUpdatedAt = "summer_trails_updated_at"
-        case openTerrainParks = "open_terrain_parks"
-        case totalTerrainParks = "total_terrain_parks"
-        case terrainParksUpdatedAt = "terrain_parks_updated_at"
+        case runs
+        case lifts
+        case summerTrails = "summer_trails"
+        case terrainParks = "terrain_parks"
     }
 
     // Encodable protocol methods
@@ -114,23 +62,10 @@ public struct Overview: Sendable, Codable, Hashable {
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encode(season, forKey: .season)
         try container.encode(news, forKey: .news)
-        try container.encode(newsHtml, forKey: .newsHtml)
-        try container.encode(newsUpdatedAt, forKey: .newsUpdatedAt)
-        try container.encodeIfPresent(openRuns, forKey: .openRuns)
-        try container.encodeIfPresent(groomedRuns, forKey: .groomedRuns)
-        try container.encode(totalRuns, forKey: .totalRuns)
-        try container.encodeIfPresent(openAcres, forKey: .openAcres)
-        try container.encodeIfPresent(totalAcres, forKey: .totalAcres)
-        try container.encode(runsUpdatedAt, forKey: .runsUpdatedAt)
-        try container.encodeIfPresent(openLifts, forKey: .openLifts)
-        try container.encode(totalLifts, forKey: .totalLifts)
-        try container.encode(liftsUpdatedAt, forKey: .liftsUpdatedAt)
-        try container.encodeIfPresent(openSummerTrails, forKey: .openSummerTrails)
-        try container.encode(totalSummerTrails, forKey: .totalSummerTrails)
-        try container.encode(summerTrailsUpdatedAt, forKey: .summerTrailsUpdatedAt)
-        try container.encodeIfPresent(openTerrainParks, forKey: .openTerrainParks)
-        try container.encode(totalTerrainParks, forKey: .totalTerrainParks)
-        try container.encode(terrainParksUpdatedAt, forKey: .terrainParksUpdatedAt)
+        try container.encode(runs, forKey: .runs)
+        try container.encode(lifts, forKey: .lifts)
+        try container.encode(summerTrails, forKey: .summerTrails)
+        try container.encode(terrainParks, forKey: .terrainParks)
     }
 }
 
@@ -138,7 +73,6 @@ public struct Overview: Sendable, Codable, Hashable {
 extension Overview: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if status == .unknownDefaultOpenApi { return true }
-        if season == .unknownDefaultOpenApi { return true }
         return false
     }
 }

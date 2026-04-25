@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **uuid** | **String** |  | 
 **name** | **String** |  | 
 **slug** | **String** |  | 
+**season** | [**SeasonType**](SeasonType.md) |  | 
+**displayOrder** | **Int64** |  | 
 **backgroundImageUrl** | **String** |  | 
 **resort** | [**ResortInfo**](ResortInfo.md) |  | 
 **elements** | [TrailMapElement] |  | 

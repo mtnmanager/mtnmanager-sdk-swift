@@ -13,15 +13,19 @@ public struct TrailMap: Sendable, Codable, Hashable {
     public var uuid: String
     public var name: String
     public var slug: String
+    public var season: SeasonType
+    public var displayOrder: Int64
     public var backgroundImageUrl: String
     public var resort: ResortInfo
     public var elements: [TrailMapElement]
     public var geoControlPoints: [GeoControlPoint]?
 
-    public init(uuid: String, name: String, slug: String, backgroundImageUrl: String, resort: ResortInfo, elements: [TrailMapElement], geoControlPoints: [GeoControlPoint]? = nil) {
+    public init(uuid: String, name: String, slug: String, season: SeasonType, displayOrder: Int64, backgroundImageUrl: String, resort: ResortInfo, elements: [TrailMapElement], geoControlPoints: [GeoControlPoint]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
+        self.season = season
+        self.displayOrder = displayOrder
         self.backgroundImageUrl = backgroundImageUrl
         self.resort = resort
         self.elements = elements
@@ -32,6 +36,8 @@ public struct TrailMap: Sendable, Codable, Hashable {
         case uuid
         case name
         case slug
+        case season
+        case displayOrder = "display_order"
         case backgroundImageUrl = "background_image_url"
         case resort
         case elements
@@ -45,6 +51,8 @@ public struct TrailMap: Sendable, Codable, Hashable {
         try container.encode(uuid, forKey: .uuid)
         try container.encode(name, forKey: .name)
         try container.encode(slug, forKey: .slug)
+        try container.encode(season, forKey: .season)
+        try container.encode(displayOrder, forKey: .displayOrder)
         try container.encode(backgroundImageUrl, forKey: .backgroundImageUrl)
         try container.encode(resort, forKey: .resort)
         try container.encode(elements, forKey: .elements)

@@ -8,15 +8,27 @@
 import Foundation
 
 /** Current operating season of the resort. */
-public enum SeasonType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
-    case winter = "winter"
-    case summer = "summer"
-    case closed = "closed"
-    case unknownDefaultOpenApi = "unknown_default_open_api"
-}
+public enum SeasonType: Sendable, Codable, Hashable {
+    case typeString(String)
+    case unknownDefaultOpenApi
 
-extension SeasonType: UnknownCaseCheckable {
-    public var containsUnknownDefaultOpenApiCase: Bool {
-        self == .unknownDefaultOpenApi
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .typeString(let value):
+            try container.encode(value)
+        case .unknownDefaultOpenApi:
+            try container.encodeNil()
+        }
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(String.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
+            self = .typeString(value)
+        } else {
+            self = .unknownDefaultOpenApi
+        }
     }
 }
+

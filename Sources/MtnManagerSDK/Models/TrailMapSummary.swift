@@ -12,17 +12,23 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
 
     public var uuid: String
     public var name: String
+    public var season: SeasonType
+    public var displayOrder: Int64
     public var hostedUrl: String
 
-    public init(uuid: String, name: String, hostedUrl: String) {
+    public init(uuid: String, name: String, season: SeasonType, displayOrder: Int64, hostedUrl: String) {
         self.uuid = uuid
         self.name = name
+        self.season = season
+        self.displayOrder = displayOrder
         self.hostedUrl = hostedUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case uuid
         case name
+        case season
+        case displayOrder = "display_order"
         case hostedUrl = "hosted_url"
     }
 
@@ -32,6 +38,8 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(uuid, forKey: .uuid)
         try container.encode(name, forKey: .name)
+        try container.encode(season, forKey: .season)
+        try container.encode(displayOrder, forKey: .displayOrder)
         try container.encode(hostedUrl, forKey: .hostedUrl)
     }
 }
