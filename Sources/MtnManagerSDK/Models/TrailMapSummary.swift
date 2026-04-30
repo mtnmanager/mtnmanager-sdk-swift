@@ -15,13 +15,19 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
     public var season: SeasonType
     public var displayOrder: Int64
     public var hostedUrl: String
+    /** Lat/lng bounding box of this map's georeferenced area, plus the  centroid of its control points (used for tie-breaking when multiple  maps cover the same point). Omitted when the map has no georeferencing. */
+    public var geoBounds: GeoBounds?
+    /** Deduplicated UUIDs of every entity (lift, run, terrain park,  summer trail, amenity, parking lot) referenced by this map's elements. */
+    public var entityUuids: [String]
 
-    public init(uuid: String, name: String, season: SeasonType, displayOrder: Int64, hostedUrl: String) {
+    public init(uuid: String, name: String, season: SeasonType, displayOrder: Int64, hostedUrl: String, geoBounds: GeoBounds? = nil, entityUuids: [String]) {
         self.uuid = uuid
         self.name = name
         self.season = season
         self.displayOrder = displayOrder
         self.hostedUrl = hostedUrl
+        self.geoBounds = geoBounds
+        self.entityUuids = entityUuids
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -30,6 +36,8 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
         case season
         case displayOrder = "display_order"
         case hostedUrl = "hosted_url"
+        case geoBounds = "geo_bounds"
+        case entityUuids = "entity_uuids"
     }
 
     // Encodable protocol methods
@@ -41,6 +49,8 @@ public struct TrailMapSummary: Sendable, Codable, Hashable {
         try container.encode(season, forKey: .season)
         try container.encode(displayOrder, forKey: .displayOrder)
         try container.encode(hostedUrl, forKey: .hostedUrl)
+        try container.encodeIfPresent(geoBounds, forKey: .geoBounds)
+        try container.encode(entityUuids, forKey: .entityUuids)
     }
 }
 
