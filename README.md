@@ -20,6 +20,7 @@ All URIs are relative to *https://your-resort.mtnmanager.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MtnManagerAPI* | [**getAmenities**](docs/MtnManagerAPI.md#getamenities) | **GET** /api/v1/report/amenities | Get amenities
 *MtnManagerAPI* | [**getFullReport**](docs/MtnManagerAPI.md#getfullreport) | **GET** /api/v1/report | Get full report
 *MtnManagerAPI* | [**getHours**](docs/MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 *MtnManagerAPI* | [**getLifts**](docs/MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts

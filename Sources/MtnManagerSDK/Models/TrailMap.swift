@@ -15,17 +15,20 @@ public struct TrailMap: Sendable, Codable, Hashable {
     public var slug: String
     public var season: SeasonType
     public var displayOrder: Int64
+    /** Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map. */
+    public var version: Int64
     public var backgroundImageUrl: String
     public var resort: ResortInfo
     public var elements: [TrailMapElement]
     public var geoControlPoints: [GeoControlPoint]?
 
-    public init(uuid: String, name: String, slug: String, season: SeasonType, displayOrder: Int64, backgroundImageUrl: String, resort: ResortInfo, elements: [TrailMapElement], geoControlPoints: [GeoControlPoint]? = nil) {
+    public init(uuid: String, name: String, slug: String, season: SeasonType, displayOrder: Int64, version: Int64, backgroundImageUrl: String, resort: ResortInfo, elements: [TrailMapElement], geoControlPoints: [GeoControlPoint]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.season = season
         self.displayOrder = displayOrder
+        self.version = version
         self.backgroundImageUrl = backgroundImageUrl
         self.resort = resort
         self.elements = elements
@@ -38,6 +41,7 @@ public struct TrailMap: Sendable, Codable, Hashable {
         case slug
         case season
         case displayOrder = "display_order"
+        case version
         case backgroundImageUrl = "background_image_url"
         case resort
         case elements
@@ -53,6 +57,7 @@ public struct TrailMap: Sendable, Codable, Hashable {
         try container.encode(slug, forKey: .slug)
         try container.encode(season, forKey: .season)
         try container.encode(displayOrder, forKey: .displayOrder)
+        try container.encode(version, forKey: .version)
         try container.encode(backgroundImageUrl, forKey: .backgroundImageUrl)
         try container.encode(resort, forKey: .resort)
         try container.encode(elements, forKey: .elements)

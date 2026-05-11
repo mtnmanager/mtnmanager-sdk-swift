@@ -4,6 +4,7 @@ All URIs are relative to *https://your-resort.mtnmanager.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getAmenities**](MtnManagerAPI.md#getamenities) | **GET** /api/v1/report/amenities | Get amenities
 [**getFullReport**](MtnManagerAPI.md#getfullreport) | **GET** /api/v1/report | Get full report
 [**getHours**](MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 [**getLifts**](MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts
@@ -17,6 +18,50 @@ Method | HTTP request | Description
 [**getTrailMaps**](MtnManagerAPI.md#gettrailmaps) | **GET** /api/v1/report/trail-maps | Get trail maps
 [**getWeather**](MtnManagerAPI.md#getweather) | **GET** /api/v1/report/weather | Get weather
 
+
+# **getAmenities**
+```swift
+    open class func getAmenities(completion: @escaping (_ data: [Amenity]?, _ error: Error?) -> Void)
+```
+
+Get amenities
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+
+// Get amenities
+MtnManagerAPI.getAmenities() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[Amenity]**](Amenity.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFullReport**
 ```swift

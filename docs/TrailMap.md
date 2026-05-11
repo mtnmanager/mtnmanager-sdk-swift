@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **slug** | **String** |  | 
 **season** | [**SeasonType**](SeasonType.md) |  | 
 **displayOrder** | **Int64** |  | 
+**version** | **Int64** | Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map. | 
 **backgroundImageUrl** | **String** |  | 
 **resort** | [**ResortInfo**](ResortInfo.md) |  | 
 **elements** | [TrailMapElement] |  | 

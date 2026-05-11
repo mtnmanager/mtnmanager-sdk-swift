@@ -10,6 +10,40 @@ import Foundation
 open class MtnManagerAPI {
 
     /**
+     Get amenities
+     
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [Amenity]
+     */
+    open class func getAmenities(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Amenity] {
+        return try await getAmenitiesWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get amenities
+     - GET /api/v1/report/amenities
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[Amenity]> 
+     */
+    open class func getAmenitiesWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Amenity]> {
+        let localVariablePath = "/api/v1/report/amenities"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[Amenity]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get full report
      
      - parameter apiConfiguration: The configuration for the http request.
