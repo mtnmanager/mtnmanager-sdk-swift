@@ -40,5 +40,59 @@ public enum PointMarker: Sendable, Codable, Hashable {
             self = .unknownDefaultOpenApi
         }
     }
+
+    public var uuid: String {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.uuid
+        case .typePointMarkerOneOf1(let value): return value.uuid
+        case .typePointMarkerOneOf2(let value): return value.uuid
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
+
+    public var x: Double {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.x
+        case .typePointMarkerOneOf1(let value): return value.x
+        case .typePointMarkerOneOf2(let value): return value.x
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
+
+    public var y: Double {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.y
+        case .typePointMarkerOneOf1(let value): return value.y
+        case .typePointMarkerOneOf2(let value): return value.y
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
+
+    public var icon: MarkerIcon? {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.icon
+        case .typePointMarkerOneOf1(let value): return value.icon
+        case .typePointMarkerOneOf2(let value): return value.icon
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
+
+    public var color: String? {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.color
+        case .typePointMarkerOneOf1(let value): return value.color
+        case .typePointMarkerOneOf2(let value): return value.color
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
+
+    public var kind: Kind {
+        switch self {
+        case .typePointMarkerOneOf(let value): return value.kind
+        case .typePointMarkerOneOf1(let value): return value.kind
+        case .typePointMarkerOneOf2(let value): return value.kind
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
 }
 

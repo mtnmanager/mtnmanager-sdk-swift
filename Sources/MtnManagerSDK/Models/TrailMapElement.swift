@@ -50,5 +50,16 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
             self = .unknownDefaultOpenApi
         }
     }
+
+    public var type: ModelType {
+        switch self {
+        case .typeTrailMapElementOneOf(let value): return value.type
+        case .typeTrailMapElementOneOf1(let value): return value.type
+        case .typeTrailMapElementOneOf2(let value): return value.type
+        case .typeTrailMapElementOneOf3(let value): return value.type
+        case .typeTrailMapElementOneOf4(let value): return value.type
+        case .unknownDefaultOpenApi: return nil
+        }
+    }
 }
 
