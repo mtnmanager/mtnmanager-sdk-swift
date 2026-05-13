@@ -14,6 +14,8 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
     case typeTrailMapElementOneOf2(TrailMapElementOneOf2)
     case typeTrailMapElementOneOf3(TrailMapElementOneOf3)
     case typeTrailMapElementOneOf4(TrailMapElementOneOf4)
+    case typeTrailMapElementOneOf5(TrailMapElementOneOf5)
+    case typeTrailMapElementOneOf6(TrailMapElementOneOf6)
     case unknownDefaultOpenApi
 
     public func encode(to encoder: Encoder) throws {
@@ -28,6 +30,10 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
         case .typeTrailMapElementOneOf3(let value):
             try container.encode(value)
         case .typeTrailMapElementOneOf4(let value):
+            try container.encode(value)
+        case .typeTrailMapElementOneOf5(let value):
+            try container.encode(value)
+        case .typeTrailMapElementOneOf6(let value):
             try container.encode(value)
         case .unknownDefaultOpenApi:
             try container.encodeNil()
@@ -46,19 +52,12 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
             self = .typeTrailMapElementOneOf3(value)
         } else if let value = try? container.decode(TrailMapElementOneOf4.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
             self = .typeTrailMapElementOneOf4(value)
+        } else if let value = try? container.decode(TrailMapElementOneOf5.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
+            self = .typeTrailMapElementOneOf5(value)
+        } else if let value = try? container.decode(TrailMapElementOneOf6.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
+            self = .typeTrailMapElementOneOf6(value)
         } else {
             self = .unknownDefaultOpenApi
-        }
-    }
-
-    public var type: ModelType {
-        switch self {
-        case .typeTrailMapElementOneOf(let value): return value.type
-        case .typeTrailMapElementOneOf1(let value): return value.type
-        case .typeTrailMapElementOneOf2(let value): return value.type
-        case .typeTrailMapElementOneOf3(let value): return value.type
-        case .typeTrailMapElementOneOf4(let value): return value.type
-        case .unknownDefaultOpenApi: return nil
         }
     }
 }

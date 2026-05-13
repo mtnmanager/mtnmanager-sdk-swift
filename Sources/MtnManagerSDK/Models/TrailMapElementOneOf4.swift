@@ -10,17 +10,35 @@ import Foundation
 public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
 
     public enum ModelType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
-        case pointMarker = "point_marker"
+        case amenityMarker = "amenity_marker"
         case unknownDefaultOpenApi = "unknown_default_open_api"
     }
     public var type: ModelType
+    public var uuid: String
+    public var x: Double
+    public var y: Double
+    public var icon: MarkerIcon?
+    public var color: String?
+    public var amenity: Amenity?
 
-    public init(type: ModelType) {
+    public init(type: ModelType, uuid: String, x: Double, y: Double, icon: MarkerIcon? = nil, color: String? = nil, amenity: Amenity? = nil) {
         self.type = type
+        self.uuid = uuid
+        self.x = x
+        self.y = y
+        self.icon = icon
+        self.color = color
+        self.amenity = amenity
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
+        case uuid
+        case x
+        case y
+        case icon
+        case color
+        case amenity
     }
 
     // Encodable protocol methods
@@ -28,6 +46,12 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)
+        try container.encode(uuid, forKey: .uuid)
+        try container.encode(x, forKey: .x)
+        try container.encode(y, forKey: .y)
+        try container.encodeIfPresent(icon, forKey: .icon)
+        try container.encodeIfPresent(color, forKey: .color)
+        try container.encodeIfPresent(amenity, forKey: .amenity)
     }
 }
 
@@ -35,6 +59,7 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
 extension TrailMapElementOneOf4: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if type == .unknownDefaultOpenApi { return true }
+        if icon == .unknownDefaultOpenApi { return true }
         return false
     }
 }

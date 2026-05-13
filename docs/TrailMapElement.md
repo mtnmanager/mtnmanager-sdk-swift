@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **icon** | [**MarkerIcon**](MarkerIcon.md) |  | [optional] 
 **color** | **String** |  | [optional] 
 **amenity** | [**Amenity**](Amenity.md) |  | [optional] 
-**kind** | **String** |  | 
 **parkingLot** | [**ParkingLot**](ParkingLot.md) |  | [optional] 
 **label** | **String** |  | 
 **searchable** | **Bool** |  | [optional] 
