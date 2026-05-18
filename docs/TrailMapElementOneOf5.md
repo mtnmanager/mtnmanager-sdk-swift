@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **icon** | [**MarkerIcon**](MarkerIcon.md) |  | [optional] 
 **color** | **String** |  | [optional] 
 **parkingLot** | [**ParkingLot**](ParkingLot.md) |  | [optional] 
+**groupLabel** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

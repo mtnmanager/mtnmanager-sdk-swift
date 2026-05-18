@@ -12,20 +12,22 @@ open class MtnManagerAPI {
     /**
      Get amenities
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Amenity]
      */
-    open class func getAmenities(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Amenity] {
-        return try await getAmenitiesWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getAmenities(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Amenity] {
+        return try await getAmenitiesWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get amenities
      - GET /api/v1/report/amenities
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Amenity]> 
      */
-    open class func getAmenitiesWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Amenity]> {
+    open class func getAmenitiesWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Amenity]> {
         let localVariablePath = "/api/v1/report/amenities"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -33,7 +35,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -46,20 +48,22 @@ open class MtnManagerAPI {
     /**
      Get full report
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: FullReport
      */
-    open class func getFullReport(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> FullReport {
-        return try await getFullReportWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getFullReport(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> FullReport {
+        return try await getFullReportWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get full report
      - GET /api/v1/report
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<FullReport> 
      */
-    open class func getFullReportWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<FullReport> {
+    open class func getFullReportWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<FullReport> {
         let localVariablePath = "/api/v1/report"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -67,7 +71,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -80,20 +84,22 @@ open class MtnManagerAPI {
     /**
      Get operating hours
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: OperatingHours
      */
-    open class func getHours(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> OperatingHours {
-        return try await getHoursWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getHours(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> OperatingHours {
+        return try await getHoursWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get operating hours
      - GET /api/v1/report/hours
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<OperatingHours> 
      */
-    open class func getHoursWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<OperatingHours> {
+    open class func getHoursWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<OperatingHours> {
         let localVariablePath = "/api/v1/report/hours"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -101,7 +107,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -114,20 +120,22 @@ open class MtnManagerAPI {
     /**
      Get lifts
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Lift]
      */
-    open class func getLifts(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Lift] {
-        return try await getLiftsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getLifts(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Lift] {
+        return try await getLiftsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get lifts
      - GET /api/v1/report/lifts
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Lift]> 
      */
-    open class func getLiftsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Lift]> {
+    open class func getLiftsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Lift]> {
         let localVariablePath = "/api/v1/report/lifts"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -135,7 +143,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -148,20 +156,22 @@ open class MtnManagerAPI {
     /**
      Get overview
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Overview
      */
-    open class func getOverview(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Overview {
-        return try await getOverviewWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getOverview(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Overview {
+        return try await getOverviewWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get overview
      - GET /api/v1/report/overview
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Overview> 
      */
-    open class func getOverviewWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<Overview> {
+    open class func getOverviewWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<Overview> {
         let localVariablePath = "/api/v1/report/overview"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -169,7 +179,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -182,20 +192,22 @@ open class MtnManagerAPI {
     /**
      Get parking lots
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [ParkingLot]
      */
-    open class func getParkingLots(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [ParkingLot] {
-        return try await getParkingLotsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getParkingLots(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [ParkingLot] {
+        return try await getParkingLotsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get parking lots
      - GET /api/v1/report/parking-lots
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[ParkingLot]> 
      */
-    open class func getParkingLotsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[ParkingLot]> {
+    open class func getParkingLotsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[ParkingLot]> {
         let localVariablePath = "/api/v1/report/parking-lots"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -203,7 +215,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -216,20 +228,22 @@ open class MtnManagerAPI {
     /**
      Get runs
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Run]
      */
-    open class func getRuns(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Run] {
-        return try await getRunsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getRuns(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Run] {
+        return try await getRunsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get runs
      - GET /api/v1/report/runs
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Run]> 
      */
-    open class func getRunsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Run]> {
+    open class func getRunsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Run]> {
         let localVariablePath = "/api/v1/report/runs"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -237,7 +251,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -250,20 +264,22 @@ open class MtnManagerAPI {
     /**
      Get snow conditions
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SnowReport]
      */
-    open class func getSnow(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SnowReport] {
-        return try await getSnowWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getSnow(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SnowReport] {
+        return try await getSnowWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get snow conditions
      - GET /api/v1/report/snow
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[SnowReport]> 
      */
-    open class func getSnowWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[SnowReport]> {
+    open class func getSnowWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[SnowReport]> {
         let localVariablePath = "/api/v1/report/snow"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -271,7 +287,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -284,20 +300,22 @@ open class MtnManagerAPI {
     /**
      Get summer trails
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SummerTrail]
      */
-    open class func getSummerTrails(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SummerTrail] {
-        return try await getSummerTrailsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getSummerTrails(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [SummerTrail] {
+        return try await getSummerTrailsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get summer trails
      - GET /api/v1/report/summer-trails
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[SummerTrail]> 
      */
-    open class func getSummerTrailsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[SummerTrail]> {
+    open class func getSummerTrailsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[SummerTrail]> {
         let localVariablePath = "/api/v1/report/summer-trails"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -305,7 +323,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -318,20 +336,22 @@ open class MtnManagerAPI {
     /**
      Get terrain parks
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [TerrainPark]
      */
-    open class func getTerrainParks(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TerrainPark] {
-        return try await getTerrainParksWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getTerrainParks(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TerrainPark] {
+        return try await getTerrainParksWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get terrain parks
      - GET /api/v1/report/terrain-parks
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[TerrainPark]> 
      */
-    open class func getTerrainParksWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[TerrainPark]> {
+    open class func getTerrainParksWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[TerrainPark]> {
         let localVariablePath = "/api/v1/report/terrain-parks"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -339,7 +359,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -353,21 +373,23 @@ open class MtnManagerAPI {
      Get trail map
      
      - parameter uuid: (path) Resource UUID 
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: TrailMap
      */
-    open class func getTrailMap(uuid: String, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> TrailMap {
-        return try await getTrailMapWithRequestBuilder(uuid: uuid, apiConfiguration: apiConfiguration).execute().body
+    open class func getTrailMap(uuid: String, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> TrailMap {
+        return try await getTrailMapWithRequestBuilder(uuid: uuid, acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get trail map
      - GET /api/v1/report/trail-map/{uuid}
      - parameter uuid: (path) Resource UUID 
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<TrailMap> 
      */
-    open class func getTrailMapWithRequestBuilder(uuid: String, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<TrailMap> {
+    open class func getTrailMapWithRequestBuilder(uuid: String, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<TrailMap> {
         var localVariablePath = "/api/v1/report/trail-map/{uuid}"
         let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
         let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -378,7 +400,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -391,20 +413,22 @@ open class MtnManagerAPI {
     /**
      Get trail maps
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [TrailMapSummary]
      */
-    open class func getTrailMaps(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TrailMapSummary] {
-        return try await getTrailMapsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getTrailMaps(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [TrailMapSummary] {
+        return try await getTrailMapsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get trail maps
      - GET /api/v1/report/trail-maps
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[TrailMapSummary]> 
      */
-    open class func getTrailMapsWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[TrailMapSummary]> {
+    open class func getTrailMapsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[TrailMapSummary]> {
         let localVariablePath = "/api/v1/report/trail-maps"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -412,7 +436,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -425,20 +449,22 @@ open class MtnManagerAPI {
     /**
      Get weather
      
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Weather
      */
-    open class func getWeather(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Weather {
-        return try await getWeatherWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    open class func getWeather(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Weather {
+        return try await getWeatherWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      Get weather
      - GET /api/v1/report/weather
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Weather> 
      */
-    open class func getWeatherWithRequestBuilder(apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<Weather> {
+    open class func getWeatherWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<Weather> {
         let localVariablePath = "/api/v1/report/weather"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -446,7 +472,7 @@ open class MtnManagerAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

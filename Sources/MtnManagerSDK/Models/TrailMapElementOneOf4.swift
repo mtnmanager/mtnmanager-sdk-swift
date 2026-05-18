@@ -20,8 +20,9 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
     public var icon: MarkerIcon?
     public var color: String?
     public var amenity: Amenity?
+    public var groupLabel: String?
 
-    public init(type: ModelType, uuid: String, x: Double, y: Double, icon: MarkerIcon? = nil, color: String? = nil, amenity: Amenity? = nil) {
+    public init(type: ModelType, uuid: String, x: Double, y: Double, icon: MarkerIcon? = nil, color: String? = nil, amenity: Amenity? = nil, groupLabel: String? = nil) {
         self.type = type
         self.uuid = uuid
         self.x = x
@@ -29,6 +30,7 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
         self.icon = icon
         self.color = color
         self.amenity = amenity
+        self.groupLabel = groupLabel
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -39,6 +41,7 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
         case icon
         case color
         case amenity
+        case groupLabel = "group_label"
     }
 
     // Encodable protocol methods
@@ -52,6 +55,7 @@ public struct TrailMapElementOneOf4: Sendable, Codable, Hashable {
         try container.encodeIfPresent(icon, forKey: .icon)
         try container.encodeIfPresent(color, forKey: .color)
         try container.encodeIfPresent(amenity, forKey: .amenity)
+        try container.encodeIfPresent(groupLabel, forKey: .groupLabel)
     }
 }
 

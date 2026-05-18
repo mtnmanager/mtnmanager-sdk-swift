@@ -16,7 +16,7 @@ public struct Schedule: Sendable, Codable, Hashable {
     public var daysString: String
     /** Array of days of the week this schedule applies to.  For programmatic use. */
     public var daysOfWeek: [DayOfWeek]
-    /** Human-readable time range.  Example: \"9:00 a.m. to 4:00 p.m.\" */
+    /** Human-readable time range.  Example: \"9:00 AM to 4:00 PM\" */
     public var timeString: String
     /** Opening time in 24-hour format (HH:MM), in resort's local timezone. */
     public var opensAt: String

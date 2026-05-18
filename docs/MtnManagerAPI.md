@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 # **getAmenities**
 ```swift
-    open class func getAmenities(completion: @escaping (_ data: [Amenity]?, _ error: Error?) -> Void)
+    open class func getAmenities(acceptLanguage: String? = nil, completion: @escaping (_ data: [Amenity]?, _ error: Error?) -> Void)
 ```
 
 Get amenities
@@ -31,9 +31,10 @@ Get amenities
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get amenities
-MtnManagerAPI.getAmenities() { (response, error) in
+MtnManagerAPI.getAmenities(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,7 +47,10 @@ MtnManagerAPI.getAmenities() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -65,7 +69,7 @@ No authorization required
 
 # **getFullReport**
 ```swift
-    open class func getFullReport(completion: @escaping (_ data: FullReport?, _ error: Error?) -> Void)
+    open class func getFullReport(acceptLanguage: String? = nil, completion: @escaping (_ data: FullReport?, _ error: Error?) -> Void)
 ```
 
 Get full report
@@ -75,9 +79,10 @@ Get full report
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get full report
-MtnManagerAPI.getFullReport() { (response, error) in
+MtnManagerAPI.getFullReport(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -90,7 +95,10 @@ MtnManagerAPI.getFullReport() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -109,7 +117,7 @@ No authorization required
 
 # **getHours**
 ```swift
-    open class func getHours(completion: @escaping (_ data: OperatingHours?, _ error: Error?) -> Void)
+    open class func getHours(acceptLanguage: String? = nil, completion: @escaping (_ data: OperatingHours?, _ error: Error?) -> Void)
 ```
 
 Get operating hours
@@ -119,9 +127,10 @@ Get operating hours
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get operating hours
-MtnManagerAPI.getHours() { (response, error) in
+MtnManagerAPI.getHours(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -134,7 +143,10 @@ MtnManagerAPI.getHours() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -153,7 +165,7 @@ No authorization required
 
 # **getLifts**
 ```swift
-    open class func getLifts(completion: @escaping (_ data: [Lift]?, _ error: Error?) -> Void)
+    open class func getLifts(acceptLanguage: String? = nil, completion: @escaping (_ data: [Lift]?, _ error: Error?) -> Void)
 ```
 
 Get lifts
@@ -163,9 +175,10 @@ Get lifts
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get lifts
-MtnManagerAPI.getLifts() { (response, error) in
+MtnManagerAPI.getLifts(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -178,7 +191,10 @@ MtnManagerAPI.getLifts() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -197,7 +213,7 @@ No authorization required
 
 # **getOverview**
 ```swift
-    open class func getOverview(completion: @escaping (_ data: Overview?, _ error: Error?) -> Void)
+    open class func getOverview(acceptLanguage: String? = nil, completion: @escaping (_ data: Overview?, _ error: Error?) -> Void)
 ```
 
 Get overview
@@ -207,9 +223,10 @@ Get overview
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get overview
-MtnManagerAPI.getOverview() { (response, error) in
+MtnManagerAPI.getOverview(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -222,7 +239,10 @@ MtnManagerAPI.getOverview() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -241,7 +261,7 @@ No authorization required
 
 # **getParkingLots**
 ```swift
-    open class func getParkingLots(completion: @escaping (_ data: [ParkingLot]?, _ error: Error?) -> Void)
+    open class func getParkingLots(acceptLanguage: String? = nil, completion: @escaping (_ data: [ParkingLot]?, _ error: Error?) -> Void)
 ```
 
 Get parking lots
@@ -251,9 +271,10 @@ Get parking lots
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get parking lots
-MtnManagerAPI.getParkingLots() { (response, error) in
+MtnManagerAPI.getParkingLots(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -266,7 +287,10 @@ MtnManagerAPI.getParkingLots() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -285,7 +309,7 @@ No authorization required
 
 # **getRuns**
 ```swift
-    open class func getRuns(completion: @escaping (_ data: [Run]?, _ error: Error?) -> Void)
+    open class func getRuns(acceptLanguage: String? = nil, completion: @escaping (_ data: [Run]?, _ error: Error?) -> Void)
 ```
 
 Get runs
@@ -295,9 +319,10 @@ Get runs
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get runs
-MtnManagerAPI.getRuns() { (response, error) in
+MtnManagerAPI.getRuns(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -310,7 +335,10 @@ MtnManagerAPI.getRuns() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -329,7 +357,7 @@ No authorization required
 
 # **getSnow**
 ```swift
-    open class func getSnow(completion: @escaping (_ data: [SnowReport]?, _ error: Error?) -> Void)
+    open class func getSnow(acceptLanguage: String? = nil, completion: @escaping (_ data: [SnowReport]?, _ error: Error?) -> Void)
 ```
 
 Get snow conditions
@@ -339,9 +367,10 @@ Get snow conditions
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get snow conditions
-MtnManagerAPI.getSnow() { (response, error) in
+MtnManagerAPI.getSnow(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -354,7 +383,10 @@ MtnManagerAPI.getSnow() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -373,7 +405,7 @@ No authorization required
 
 # **getSummerTrails**
 ```swift
-    open class func getSummerTrails(completion: @escaping (_ data: [SummerTrail]?, _ error: Error?) -> Void)
+    open class func getSummerTrails(acceptLanguage: String? = nil, completion: @escaping (_ data: [SummerTrail]?, _ error: Error?) -> Void)
 ```
 
 Get summer trails
@@ -383,9 +415,10 @@ Get summer trails
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get summer trails
-MtnManagerAPI.getSummerTrails() { (response, error) in
+MtnManagerAPI.getSummerTrails(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -398,7 +431,10 @@ MtnManagerAPI.getSummerTrails() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -417,7 +453,7 @@ No authorization required
 
 # **getTerrainParks**
 ```swift
-    open class func getTerrainParks(completion: @escaping (_ data: [TerrainPark]?, _ error: Error?) -> Void)
+    open class func getTerrainParks(acceptLanguage: String? = nil, completion: @escaping (_ data: [TerrainPark]?, _ error: Error?) -> Void)
 ```
 
 Get terrain parks
@@ -427,9 +463,10 @@ Get terrain parks
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get terrain parks
-MtnManagerAPI.getTerrainParks() { (response, error) in
+MtnManagerAPI.getTerrainParks(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -442,7 +479,10 @@ MtnManagerAPI.getTerrainParks() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -461,7 +501,7 @@ No authorization required
 
 # **getTrailMap**
 ```swift
-    open class func getTrailMap(uuid: String, completion: @escaping (_ data: TrailMap?, _ error: Error?) -> Void)
+    open class func getTrailMap(uuid: String, acceptLanguage: String? = nil, completion: @escaping (_ data: TrailMap?, _ error: Error?) -> Void)
 ```
 
 Get trail map
@@ -472,9 +512,10 @@ Get trail map
 import MtnManagerSDK
 
 let uuid = "uuid_example" // String | Resource UUID
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get trail map
-MtnManagerAPI.getTrailMap(uuid: uuid) { (response, error) in
+MtnManagerAPI.getTrailMap(uuid: uuid, acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -491,6 +532,7 @@ MtnManagerAPI.getTrailMap(uuid: uuid) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **String** | Resource UUID | 
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -509,7 +551,7 @@ No authorization required
 
 # **getTrailMaps**
 ```swift
-    open class func getTrailMaps(completion: @escaping (_ data: [TrailMapSummary]?, _ error: Error?) -> Void)
+    open class func getTrailMaps(acceptLanguage: String? = nil, completion: @escaping (_ data: [TrailMapSummary]?, _ error: Error?) -> Void)
 ```
 
 Get trail maps
@@ -519,9 +561,10 @@ Get trail maps
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get trail maps
-MtnManagerAPI.getTrailMaps() { (response, error) in
+MtnManagerAPI.getTrailMaps(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -534,7 +577,10 @@ MtnManagerAPI.getTrailMaps() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
@@ -553,7 +599,7 @@ No authorization required
 
 # **getWeather**
 ```swift
-    open class func getWeather(completion: @escaping (_ data: Weather?, _ error: Error?) -> Void)
+    open class func getWeather(acceptLanguage: String? = nil, completion: @escaping (_ data: Weather?, _ error: Error?) -> Void)
 ```
 
 Get weather
@@ -563,9 +609,10 @@ Get weather
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import MtnManagerSDK
 
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get weather
-MtnManagerAPI.getWeather() { (response, error) in
+MtnManagerAPI.getWeather(acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -578,7 +625,10 @@ MtnManagerAPI.getWeather() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type
 
