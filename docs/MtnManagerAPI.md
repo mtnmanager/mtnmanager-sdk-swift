@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getFullReport**](MtnManagerAPI.md#getfullreport) | **GET** /api/v1/report | Get full report
 [**getHours**](MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 [**getLifts**](MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts
+[**getMobileApp**](MtnManagerAPI.md#getmobileapp) | **GET** /api/v1/report/mobile-app | Get mobile app data
 [**getOverview**](MtnManagerAPI.md#getoverview) | **GET** /api/v1/report/overview | Get overview
 [**getParkingLots**](MtnManagerAPI.md#getparkinglots) | **GET** /api/v1/report/parking-lots | Get parking lots
 [**getRuns**](MtnManagerAPI.md#getruns) | **GET** /api/v1/report/runs | Get runs
@@ -199,6 +200,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[Lift]**](Lift.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getMobileApp**
+```swift
+    open class func getMobileApp(acceptLanguage: String? = nil, completion: @escaping (_ data: MobileAppResponse?, _ error: Error?) -> Void)
+```
+
+Get mobile app data
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+
+// Get mobile app data
+MtnManagerAPI.getMobileApp(acceptLanguage: acceptLanguage) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
+
+### Return type
+
+[**MobileAppResponse**](MobileAppResponse.md)
 
 ### Authorization
 

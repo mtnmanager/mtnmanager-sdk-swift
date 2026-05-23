@@ -24,6 +24,7 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**getFullReport**](docs/MtnManagerAPI.md#getfullreport) | **GET** /api/v1/report | Get full report
 *MtnManagerAPI* | [**getHours**](docs/MtnManagerAPI.md#gethours) | **GET** /api/v1/report/hours | Get operating hours
 *MtnManagerAPI* | [**getLifts**](docs/MtnManagerAPI.md#getlifts) | **GET** /api/v1/report/lifts | Get lifts
+*MtnManagerAPI* | [**getMobileApp**](docs/MtnManagerAPI.md#getmobileapp) | **GET** /api/v1/report/mobile-app | Get mobile app data
 *MtnManagerAPI* | [**getOverview**](docs/MtnManagerAPI.md#getoverview) | **GET** /api/v1/report/overview | Get overview
 *MtnManagerAPI* | [**getParkingLots**](docs/MtnManagerAPI.md#getparkinglots) | **GET** /api/v1/report/parking-lots | Get parking lots
 *MtnManagerAPI* | [**getRuns**](docs/MtnManagerAPI.md#getruns) | **GET** /api/v1/report/runs | Get runs
@@ -64,6 +65,8 @@ Class | Method | HTTP request | Description
  - [LiftStatus](docs/LiftStatus.md)
  - [LiftType](docs/LiftType.md)
  - [MarkerIcon](docs/MarkerIcon.md)
+ - [MobileAppBanner](docs/MobileAppBanner.md)
+ - [MobileAppResponse](docs/MobileAppResponse.md)
  - [OperatingHours](docs/OperatingHours.md)
  - [Overview](docs/Overview.md)
  - [OverviewLifts](docs/OverviewLifts.md)
