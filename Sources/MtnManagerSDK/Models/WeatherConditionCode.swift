@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Weather condition code   Variants mirror Apple&#39;s &#x60;WeatherCondition&#x60; enum exactly so they match the  &#x60;conditionCode&#x60; strings returned by the WeatherKit REST API verbatim.  See https://developer.apple.com/documentation/weatherkit/weathercondition */
+/** Weather condition code */
 public enum WeatherConditionCode: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case clear = "Clear"
     case cloudy = "Cloudy"
