@@ -14,15 +14,15 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
     public var uuid: String
     public var subtitle: String
     /** Full public URL of the banner image. */
-    public var image: String
+    public var imageUrl: String
     /** Destination URL opened when the banner is tapped. */
     public var url: String
 
-    public init(title: String, uuid: String, subtitle: String, image: String, url: String) {
+    public init(title: String, uuid: String, subtitle: String, imageUrl: String, url: String) {
         self.title = title
         self.uuid = uuid
         self.subtitle = subtitle
-        self.image = image
+        self.imageUrl = imageUrl
         self.url = url
     }
 
@@ -30,7 +30,7 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
         case title
         case uuid
         case subtitle
-        case image
+        case imageUrl = "image_url"
         case url
     }
 
@@ -41,7 +41,7 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
         try container.encode(title, forKey: .title)
         try container.encode(uuid, forKey: .uuid)
         try container.encode(subtitle, forKey: .subtitle)
-        try container.encode(image, forKey: .image)
+        try container.encode(imageUrl, forKey: .imageUrl)
         try container.encode(url, forKey: .url)
     }
 }
