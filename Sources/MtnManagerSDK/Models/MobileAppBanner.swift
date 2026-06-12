@@ -17,13 +17,16 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
     public var imageUrl: String
     /** Destination URL opened when the banner is tapped. */
     public var url: String
+    /** Base64-encoded ThumbHash of the banner image, for rendering a blurred  placeholder while the full image loads. */
+    public var thumbHash: String
 
-    public init(title: String, uuid: String, subtitle: String, imageUrl: String, url: String) {
+    public init(title: String, uuid: String, subtitle: String, imageUrl: String, url: String, thumbHash: String) {
         self.title = title
         self.uuid = uuid
         self.subtitle = subtitle
         self.imageUrl = imageUrl
         self.url = url
+        self.thumbHash = thumbHash
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +35,7 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
         case subtitle
         case imageUrl = "image_url"
         case url
+        case thumbHash = "thumb_hash"
     }
 
     // Encodable protocol methods
@@ -43,6 +47,7 @@ public struct MobileAppBanner: Sendable, Codable, Hashable {
         try container.encode(subtitle, forKey: .subtitle)
         try container.encode(imageUrl, forKey: .imageUrl)
         try container.encode(url, forKey: .url)
+        try container.encode(thumbHash, forKey: .thumbHash)
     }
 }
 
