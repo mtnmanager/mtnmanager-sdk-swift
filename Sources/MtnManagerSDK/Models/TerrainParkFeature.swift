@@ -24,8 +24,10 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
     public var size: FeatureSize?
     /** Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled. */
     public var status: TerrainParkFeatureStatus
+    /** Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, featureType: FeatureType, size: FeatureSize? = nil, status: TerrainParkFeatureStatus) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, featureType: FeatureType, size: FeatureSize? = nil, status: TerrainParkFeatureStatus, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -33,6 +35,7 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
         self.featureType = featureType
         self.size = size
         self.status = status
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -43,6 +46,7 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
         case featureType = "feature_type"
         case size
         case status
+        case images
     }
 
     // Encodable protocol methods
@@ -56,6 +60,7 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
         try container.encode(featureType, forKey: .featureType)
         try container.encodeIfPresent(size, forKey: .size)
         try container.encode(status, forKey: .status)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 

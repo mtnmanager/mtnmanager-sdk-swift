@@ -487,9 +487,9 @@ open class MtnManagerAPI {
      
      - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Weather
+     - returns: [Weather]
      */
-    open class func getWeather(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> Weather {
+    open class func getWeather(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Weather] {
         return try await getWeatherWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -498,9 +498,9 @@ open class MtnManagerAPI {
      - GET /api/v1/report/weather
      - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Weather> 
+     - returns: RequestBuilder<[Weather]> 
      */
-    open class func getWeatherWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<Weather> {
+    open class func getWeatherWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Weather]> {
         let localVariablePath = "/api/v1/report/weather"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -513,7 +513,7 @@ open class MtnManagerAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Weather>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Weather]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }

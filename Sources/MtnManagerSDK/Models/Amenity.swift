@@ -20,22 +20,28 @@ public struct Amenity: Sendable, Codable, Hashable {
     public var category: AmenityCategory
     /** Website URL for the amenity, if available. */
     public var website: String
+    /** Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated. */
+    public var hasOperatingHours: Bool
     /** Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone. */
     public var opensAt: String?
     /** Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone. */
     public var closesAt: String?
     /** Recurring operating schedules for this amenity (e.g. \"Saturday & Sunday,  9:00 a.m. to 4:00 p.m.\"), with both human-readable and structured fields. */
     public var schedules: [Schedule]
+    /** Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(description: String, uuid: String, name: String, category: AmenityCategory, website: String, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule]) {
+    public init(description: String, uuid: String, name: String, category: AmenityCategory, website: String, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
         self.description = description
         self.uuid = uuid
         self.name = name
         self.category = category
         self.website = website
+        self.hasOperatingHours = hasOperatingHours
         self.opensAt = opensAt
         self.closesAt = closesAt
         self.schedules = schedules
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,9 +50,11 @@ public struct Amenity: Sendable, Codable, Hashable {
         case name
         case category
         case website
+        case hasOperatingHours = "has_operating_hours"
         case opensAt = "opens_at"
         case closesAt = "closes_at"
         case schedules
+        case images
     }
 
     // Encodable protocol methods
@@ -58,9 +66,11 @@ public struct Amenity: Sendable, Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(category, forKey: .category)
         try container.encode(website, forKey: .website)
+        try container.encode(hasOperatingHours, forKey: .hasOperatingHours)
         try container.encodeIfPresent(opensAt, forKey: .opensAt)
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encode(schedules, forKey: .schedules)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 

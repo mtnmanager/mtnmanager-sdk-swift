@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **areaDisplayOrder** | **Int** | Display order of the area this terrain park belongs to, if assigned, for sorting purposes. | [optional] 
 **features** | [TerrainParkFeature] | Features within this terrain park (jumps, boxes, rails, etc.). | 
 **updatedAt** | **Date** | When this terrain park or any of its features was last updated. | 
+**images** | [EntityImage] | Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

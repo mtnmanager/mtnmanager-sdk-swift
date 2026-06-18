@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **parkingLots** | [ParkingLot] | List of all parking lots at the resort with their current status and amenities. | 
 **summerTrails** | [SummerTrail] | List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. | 
 **hours** | [**OperatingHours**](OperatingHours.md) |  | 
-**weather** | [**Weather**](Weather.md) |  | [optional] 
+**weather** | [Weather] | Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -648,7 +648,7 @@ No authorization required
 
 # **getWeather**
 ```swift
-    open class func getWeather(acceptLanguage: String? = nil, completion: @escaping (_ data: Weather?, _ error: Error?) -> Void)
+    open class func getWeather(acceptLanguage: String? = nil, completion: @escaping (_ data: [Weather]?, _ error: Error?) -> Void)
 ```
 
 Get weather
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Weather**](Weather.md)
+[**[Weather]**](Weather.md)
 
 ### Authorization
 

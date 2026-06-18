@@ -32,8 +32,10 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     public var features: [TerrainParkFeature]
     /** When this terrain park or any of its features was last updated. */
     public var updatedAt: Date
+    /** Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -45,6 +47,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         self.areaDisplayOrder = areaDisplayOrder
         self.features = features
         self.updatedAt = updatedAt
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +62,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         case areaDisplayOrder = "area_display_order"
         case features
         case updatedAt = "updated_at"
+        case images
     }
 
     // Encodable protocol methods
@@ -76,6 +80,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(features, forKey: .features)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 

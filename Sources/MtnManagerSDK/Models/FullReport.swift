@@ -25,9 +25,10 @@ public struct FullReport: Sendable, Codable, Hashable {
     /** List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. */
     public var summerTrails: [SummerTrail]
     public var hours: OperatingHours
-    public var weather: Weather?
+    /** Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. */
+    public var weather: [Weather]?
 
-    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: Weather? = nil) {
+    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil) {
         self.resort = resort
         self.status = status
         self.snow = snow

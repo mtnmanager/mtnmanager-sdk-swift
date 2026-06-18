@@ -34,8 +34,10 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     public var areaDisplayOrder: Int?
     /** When this trail's information was last updated. */
     public var updatedAt: Date
+    /** Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, trailType: [SummerTrailType], difficulty: SummerTrailDifficulty? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, trailType: [SummerTrailType], difficulty: SummerTrailDifficulty? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -48,6 +50,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         self.areaName = areaName
         self.areaDisplayOrder = areaDisplayOrder
         self.updatedAt = updatedAt
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -63,6 +66,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         case areaName = "area_name"
         case areaDisplayOrder = "area_display_order"
         case updatedAt = "updated_at"
+        case images
     }
 
     // Encodable protocol methods
@@ -81,6 +85,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         try container.encodeIfPresent(areaName, forKey: .areaName)
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 

@@ -10,6 +10,12 @@ import Foundation
 /** Current and forecasted weather conditions for the resort&#39;s location.  Only included/available if the weather feature is enabled and GPS coordinates are configured. */
 public struct Weather: Sendable, Codable, Hashable {
 
+    /** The area this weather belongs to, or omitted for resort-wide weather. */
+    public var areaUuid: String?
+    /** The area's name, or omitted for resort-wide weather. */
+    public var areaName: String?
+    /** The area's display order, or omitted for resort-wide weather. */
+    public var areaDisplayOrder: Int?
     /** Current weather conditions */
     public var current: CurrentWeather
     /** Hourly forecast for next 24 hours (including current hour) */
@@ -21,7 +27,10 @@ public struct Weather: Sendable, Codable, Hashable {
     /** When this data was last updated */
     public var updatedAt: Date
 
-    public init(current: CurrentWeather, hourlyForecast: [HourlyForecast], dailyForecast: [DailyForecast], attribution: String, updatedAt: Date) {
+    public init(areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, current: CurrentWeather, hourlyForecast: [HourlyForecast], dailyForecast: [DailyForecast], attribution: String, updatedAt: Date) {
+        self.areaUuid = areaUuid
+        self.areaName = areaName
+        self.areaDisplayOrder = areaDisplayOrder
         self.current = current
         self.hourlyForecast = hourlyForecast
         self.dailyForecast = dailyForecast
@@ -30,6 +39,9 @@ public struct Weather: Sendable, Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case areaUuid = "area_uuid"
+        case areaName = "area_name"
+        case areaDisplayOrder = "area_display_order"
         case current
         case hourlyForecast = "hourly_forecast"
         case dailyForecast = "daily_forecast"
@@ -41,6 +53,9 @@ public struct Weather: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
+        try container.encodeIfPresent(areaName, forKey: .areaName)
+        try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(current, forKey: .current)
         try container.encode(hourlyForecast, forKey: .hourlyForecast)
         try container.encode(dailyForecast, forKey: .dailyForecast)

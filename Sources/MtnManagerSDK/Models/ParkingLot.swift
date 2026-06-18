@@ -28,8 +28,10 @@ public struct ParkingLot: Sendable, Codable, Hashable {
     public var reservationRequired: Bool
     /** When this parking lot's information was last updated. */
     public var updatedAt: Date
+    /** Images attached to this parking lot, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, status: ParkingLotStatus, capacity: Int? = nil, shuttle: Bool, paid: Bool, reservationRequired: Bool, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, status: ParkingLotStatus, capacity: Int? = nil, shuttle: Bool, paid: Bool, reservationRequired: Bool, updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -39,6 +41,7 @@ public struct ParkingLot: Sendable, Codable, Hashable {
         self.paid = paid
         self.reservationRequired = reservationRequired
         self.updatedAt = updatedAt
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -51,6 +54,7 @@ public struct ParkingLot: Sendable, Codable, Hashable {
         case paid
         case reservationRequired = "reservation_required"
         case updatedAt = "updated_at"
+        case images
     }
 
     // Encodable protocol methods
@@ -66,6 +70,7 @@ public struct ParkingLot: Sendable, Codable, Hashable {
         try container.encode(paid, forKey: .paid)
         try container.encode(reservationRequired, forKey: .reservationRequired)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 

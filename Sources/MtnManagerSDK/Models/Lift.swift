@@ -52,8 +52,10 @@ public struct Lift: Sendable, Codable, Hashable {
     public var areaDisplayOrder: Int?
     /** When this lift's information was last updated. */
     public var updatedAt: Date
+    /** Images attached to this lift, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
+    public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, travelTime: Double? = nil, lengthFt: Int? = nil, lengthM: Int? = nil, verticalRiseFt: Int? = nil, verticalRiseM: Int? = nil, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, travelTime: Double? = nil, lengthFt: Int? = nil, lengthM: Int? = nil, verticalRiseFt: Int? = nil, verticalRiseM: Int? = nil, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -75,6 +77,7 @@ public struct Lift: Sendable, Codable, Hashable {
         self.areaName = areaName
         self.areaDisplayOrder = areaDisplayOrder
         self.updatedAt = updatedAt
+        self.images = images
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -99,6 +102,7 @@ public struct Lift: Sendable, Codable, Hashable {
         case areaName = "area_name"
         case areaDisplayOrder = "area_display_order"
         case updatedAt = "updated_at"
+        case images
     }
 
     // Encodable protocol methods
@@ -126,6 +130,7 @@ public struct Lift: Sendable, Codable, Hashable {
         try container.encodeIfPresent(areaName, forKey: .areaName)
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(images, forKey: .images)
     }
 }
 
