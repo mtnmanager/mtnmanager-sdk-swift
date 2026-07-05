@@ -34,6 +34,8 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**getTrailMap**](docs/MtnManagerAPI.md#gettrailmap) | **GET** /api/v1/report/trail-map/{uuid} | Get trail map
 *MtnManagerAPI* | [**getTrailMaps**](docs/MtnManagerAPI.md#gettrailmaps) | **GET** /api/v1/report/trail-maps | Get trail maps
 *MtnManagerAPI* | [**getWeather**](docs/MtnManagerAPI.md#getweather) | **GET** /api/v1/report/weather | Get weather
+*MtnManagerAPI* | [**getWebcamHistory**](docs/MtnManagerAPI.md#getwebcamhistory) | **GET** /api/v1/report/webcam/{uuid}/history | Get webcam history
+*MtnManagerAPI* | [**getWebcams**](docs/MtnManagerAPI.md#getwebcams) | **GET** /api/v1/report/webcams | Get webcams
 
 
 ## Documentation For Models
@@ -106,10 +108,15 @@ Class | Method | HTTP request | Description
  - [TrailMapElementOneOf4](docs/TrailMapElementOneOf4.md)
  - [TrailMapElementOneOf5](docs/TrailMapElementOneOf5.md)
  - [TrailMapElementOneOf6](docs/TrailMapElementOneOf6.md)
+ - [TrailMapElementOneOf7](docs/TrailMapElementOneOf7.md)
  - [TrailMapSummary](docs/TrailMapSummary.md)
  - [UnitPreference](docs/UnitPreference.md)
  - [Weather](docs/Weather.md)
  - [WeatherConditionCode](docs/WeatherConditionCode.md)
+ - [Webcam](docs/Webcam.md)
+ - [WebcamHistoryFrame](docs/WebcamHistoryFrame.md)
+ - [WebcamHistoryQuery](docs/WebcamHistoryQuery.md)
+ - [WebcamHistoryResponse](docs/WebcamHistoryResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

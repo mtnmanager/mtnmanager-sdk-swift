@@ -16,6 +16,7 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
     case typeTrailMapElementOneOf4(TrailMapElementOneOf4)
     case typeTrailMapElementOneOf5(TrailMapElementOneOf5)
     case typeTrailMapElementOneOf6(TrailMapElementOneOf6)
+    case typeTrailMapElementOneOf7(TrailMapElementOneOf7)
     case unknownDefaultOpenApi
 
     public func encode(to encoder: Encoder) throws {
@@ -34,6 +35,8 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
         case .typeTrailMapElementOneOf5(let value):
             try container.encode(value)
         case .typeTrailMapElementOneOf6(let value):
+            try container.encode(value)
+        case .typeTrailMapElementOneOf7(let value):
             try container.encode(value)
         case .unknownDefaultOpenApi:
             try container.encodeNil()
@@ -56,6 +59,8 @@ public enum TrailMapElement: Sendable, Codable, Hashable {
             self = .typeTrailMapElementOneOf5(value)
         } else if let value = try? container.decode(TrailMapElementOneOf6.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
             self = .typeTrailMapElementOneOf6(value)
+        } else if let value = try? container.decode(TrailMapElementOneOf7.self), (value as? UnknownCaseCheckable)?.containsUnknownDefaultOpenApiCase != true {
+            self = .typeTrailMapElementOneOf7(value)
         } else {
             self = .unknownDefaultOpenApi
         }

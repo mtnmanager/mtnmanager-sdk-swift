@@ -517,4 +517,89 @@ open class MtnManagerAPI {
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
+
+    /**
+     Get webcam history
+     
+     - parameter uuid: (path) Resource UUID 
+     - parameter from: (query) Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
+     - parameter to: (query) Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: WebcamHistoryResponse
+     */
+    open class func getWebcamHistory(uuid: String, from: String? = nil, to: String? = nil, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> WebcamHistoryResponse {
+        return try await getWebcamHistoryWithRequestBuilder(uuid: uuid, from: from, to: to, acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get webcam history
+     - GET /api/v1/report/webcam/{uuid}/history
+     - parameter uuid: (path) Resource UUID 
+     - parameter from: (query) Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
+     - parameter to: (query) Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<WebcamHistoryResponse> 
+     */
+    open class func getWebcamHistoryWithRequestBuilder(uuid: String, from: String? = nil, to: String? = nil, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<WebcamHistoryResponse> {
+        var localVariablePath = "/api/v1/report/webcam/{uuid}/history"
+        let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
+        let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{uuid}", with: uuidPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "from": (wrappedValue: from?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "to": (wrappedValue: to?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<WebcamHistoryResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Get webcams
+     
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [Webcam]
+     */
+    open class func getWebcams(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> [Webcam] {
+        return try await getWebcamsWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get webcams
+     - GET /api/v1/report/webcams
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[Webcam]> 
+     */
+    open class func getWebcamsWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<[Webcam]> {
+        let localVariablePath = "/api/v1/report/webcams"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[Webcam]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
 }

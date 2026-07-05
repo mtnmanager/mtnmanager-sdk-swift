@@ -30,6 +30,7 @@ public enum MarkerIcon: String, Sendable, Codable, CaseIterable, CaseIterableDef
     case retail = "retail"
     case atm = "atm"
     case star = "star"
+    case webcam = "webcam"
     case unknownDefaultOpenApi = "unknown_default_open_api"
 }
 

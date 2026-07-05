@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **amenity** | [**Amenity**](Amenity.md) |  | [optional] 
 **groupLabel** | **String** |  | [optional] 
 **parkingLot** | [**ParkingLot**](ParkingLot.md) |  | [optional] 
+**webcam** | [**Webcam**](Webcam.md) |  | [optional] 
 **label** | **String** |  | 
 **searchable** | **Bool** |  | [optional] 
 
