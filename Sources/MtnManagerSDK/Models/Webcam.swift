@@ -21,10 +21,19 @@ public struct Webcam: Sendable, Codable, Hashable {
     public var latestDaylightImageUrl: String
     public var latestThumbUrl: String
     public var latestDaylightThumbUrl: String
+    /** ThumbHash of the `latest` frame (standard base64) — a compact blur  placeholder to render while the image loads. Empty string until the first  frame (or on cameras predating the feature). */
+    public var latestThumbhash: String
+    /** ThumbHash of the `latest-daylight` frame (standard base64). Empty string  until the first daylight frame. */
+    public var latestDaylightThumbhash: String
+    /** Whether this camera archives frames — i.e. whether its history endpoint  returns anything. When `false`, don't call the history API for it. */
+    public var hasHistory: Bool
+    /** Camera elevation in both units; omitted when unset. */
+    public var elevationFt: Int?
+    public var elevationM: Int?
     /** Time of the most recently published frame; omitted until the first frame. */
     public var lastFrameAt: String?
 
-    public init(uuid: String, name: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, latestImageUrl: String, latestDaylightImageUrl: String, latestThumbUrl: String, latestDaylightThumbUrl: String, lastFrameAt: String? = nil) {
+    public init(uuid: String, name: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, latestImageUrl: String, latestDaylightImageUrl: String, latestThumbUrl: String, latestDaylightThumbUrl: String, latestThumbhash: String, latestDaylightThumbhash: String, hasHistory: Bool, elevationFt: Int? = nil, elevationM: Int? = nil, lastFrameAt: String? = nil) {
         self.uuid = uuid
         self.name = name
         self.areaUuid = areaUuid
@@ -34,6 +43,11 @@ public struct Webcam: Sendable, Codable, Hashable {
         self.latestDaylightImageUrl = latestDaylightImageUrl
         self.latestThumbUrl = latestThumbUrl
         self.latestDaylightThumbUrl = latestDaylightThumbUrl
+        self.latestThumbhash = latestThumbhash
+        self.latestDaylightThumbhash = latestDaylightThumbhash
+        self.hasHistory = hasHistory
+        self.elevationFt = elevationFt
+        self.elevationM = elevationM
         self.lastFrameAt = lastFrameAt
     }
 
@@ -47,6 +61,11 @@ public struct Webcam: Sendable, Codable, Hashable {
         case latestDaylightImageUrl = "latest_daylight_image_url"
         case latestThumbUrl = "latest_thumb_url"
         case latestDaylightThumbUrl = "latest_daylight_thumb_url"
+        case latestThumbhash = "latest_thumbhash"
+        case latestDaylightThumbhash = "latest_daylight_thumbhash"
+        case hasHistory = "has_history"
+        case elevationFt = "elevation_ft"
+        case elevationM = "elevation_m"
         case lastFrameAt = "last_frame_at"
     }
 
@@ -63,6 +82,11 @@ public struct Webcam: Sendable, Codable, Hashable {
         try container.encode(latestDaylightImageUrl, forKey: .latestDaylightImageUrl)
         try container.encode(latestThumbUrl, forKey: .latestThumbUrl)
         try container.encode(latestDaylightThumbUrl, forKey: .latestDaylightThumbUrl)
+        try container.encode(latestThumbhash, forKey: .latestThumbhash)
+        try container.encode(latestDaylightThumbhash, forKey: .latestDaylightThumbhash)
+        try container.encode(hasHistory, forKey: .hasHistory)
+        try container.encodeIfPresent(elevationFt, forKey: .elevationFt)
+        try container.encodeIfPresent(elevationM, forKey: .elevationM)
         try container.encodeIfPresent(lastFrameAt, forKey: .lastFrameAt)
     }
 }

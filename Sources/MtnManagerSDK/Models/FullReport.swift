@@ -27,8 +27,10 @@ public struct FullReport: Sendable, Codable, Hashable {
     public var hours: OperatingHours
     /** Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. */
     public var weather: [Weather]?
+    /** Enabled webcams with the URLs of their current and last-daylight frames  plus thumbnails. Empty when the resort does not have webcams. */
+    public var webcams: [Webcam]?
 
-    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil) {
+    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil, webcams: [Webcam]? = nil) {
         self.resort = resort
         self.status = status
         self.snow = snow
@@ -39,6 +41,7 @@ public struct FullReport: Sendable, Codable, Hashable {
         self.summerTrails = summerTrails
         self.hours = hours
         self.weather = weather
+        self.webcams = webcams
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -52,6 +55,7 @@ public struct FullReport: Sendable, Codable, Hashable {
         case summerTrails = "summer_trails"
         case hours
         case weather
+        case webcams
     }
 
     // Encodable protocol methods
@@ -68,6 +72,7 @@ public struct FullReport: Sendable, Codable, Hashable {
         try container.encode(summerTrails, forKey: .summerTrails)
         try container.encode(hours, forKey: .hours)
         try container.encodeIfPresent(weather, forKey: .weather)
+        try container.encodeIfPresent(webcams, forKey: .webcams)
     }
 }
 
