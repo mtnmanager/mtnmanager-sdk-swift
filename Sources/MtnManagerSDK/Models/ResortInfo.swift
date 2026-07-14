@@ -22,14 +22,17 @@ public struct ResortInfo: Sendable, Codable, Hashable {
     public var region: Region
     /** Preferred unit system for measurements (metric or imperial). */
     public var unitPreference: UnitPreference
+    /** Full public URL to the resort's logo image. `null` if no logo is set. */
+    public var logoUrl: String?
 
-    public init(uuid: String, name: String, slug: String, timezone: String, region: Region, unitPreference: UnitPreference) {
+    public init(uuid: String, name: String, slug: String, timezone: String, region: Region, unitPreference: UnitPreference, logoUrl: String? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.timezone = timezone
         self.region = region
         self.unitPreference = unitPreference
+        self.logoUrl = logoUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -39,6 +42,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         case timezone
         case region
         case unitPreference = "unit_preference"
+        case logoUrl = "logo_url"
     }
 
     // Encodable protocol methods
@@ -51,6 +55,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         try container.encode(timezone, forKey: .timezone)
         try container.encode(region, forKey: .region)
         try container.encode(unitPreference, forKey: .unitPreference)
+        try container.encodeIfPresent(logoUrl, forKey: .logoUrl)
     }
 }
 
