@@ -46,6 +46,42 @@ open class MtnManagerAPI {
     }
 
     /**
+     Get app report
+     
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: AppReport
+     */
+    open class func getAppReport(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> AppReport {
+        return try await getAppReportWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get app report
+     - GET /api/v1/report/app
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<AppReport> 
+     */
+    open class func getAppReportWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<AppReport> {
+        let localVariablePath = "/api/v1/report/app"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AppReport>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get full report
      
      - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
@@ -149,42 +185,6 @@ open class MtnManagerAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<[Lift]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
-    }
-
-    /**
-     Get mobile app data
-     
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: MobileAppResponse
-     */
-    open class func getMobileApp(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> MobileAppResponse {
-        return try await getMobileAppWithRequestBuilder(acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
-    }
-
-    /**
-     Get mobile app data
-     - GET /api/v1/report/mobile-app
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<MobileAppResponse> 
-     */
-    open class func getMobileAppWithRequestBuilder(acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<MobileAppResponse> {
-        let localVariablePath = "/api/v1/report/mobile-app"
-        let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: any Sendable]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<MobileAppResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
