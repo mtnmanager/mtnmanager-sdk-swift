@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**config** | [**AppConfig**](AppConfig.md) | App-level configuration: the resort&#39;s hosted base URL and cache-busting  metadata for statically shipped assets. | 
 **resort** | [**ResortInfo**](ResortInfo.md) |  | 
 **status** | [**Overview**](Overview.md) |  | 
 **snow** | [SnowReport] | Provides current snow conditions including base depth, surface conditions,  and snowfall totals in both metric and imperial units.   May contain multiple, representing different reporting areas. | 

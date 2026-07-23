@@ -45,6 +45,7 @@ Class | Method | HTTP request | Description
  - [AmenityCalendarEntry](docs/AmenityCalendarEntry.md)
  - [AmenityCategory](docs/AmenityCategory.md)
  - [AmenitySchedule](docs/AmenitySchedule.md)
+ - [AppConfig](docs/AppConfig.md)
  - [AppReport](docs/AppReport.md)
  - [CalendarDay](docs/CalendarDay.md)
  - [ClosureReason](docs/ClosureReason.md)

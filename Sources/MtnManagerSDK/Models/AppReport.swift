@@ -10,6 +10,8 @@ import Foundation
 /** The aggregated report built for the mobile apps: every domain of the full  report inlined directly, plus the amenities list, trail-map summaries, and  mobile-app banners — all from a single request. Requires the &#x60;MobileApp&#x60;  entitlement; feature-gated sections (trail maps) come back empty rather than  erroring. */
 public struct AppReport: Sendable, Codable, Hashable {
 
+    /** App-level configuration: the resort's hosted base URL and cache-busting  metadata for statically shipped assets. */
+    public var config: AppConfig
     public var resort: ResortInfo
     public var status: Overview
     /** Provides current snow conditions including base depth, surface conditions,  and snowfall totals in both metric and imperial units.   May contain multiple, representing different reporting areas. */
@@ -36,7 +38,8 @@ public struct AppReport: Sendable, Codable, Hashable {
     /** Mobile-app banners, in display order. */
     public var appBanners: [MobileAppBanner]
 
-    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil, webcams: [Webcam]? = nil, amenities: [Amenity], trailMaps: [TrailMapSummary]? = nil, appBanners: [MobileAppBanner]) {
+    public init(config: AppConfig, resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil, webcams: [Webcam]? = nil, amenities: [Amenity], trailMaps: [TrailMapSummary]? = nil, appBanners: [MobileAppBanner]) {
+        self.config = config
         self.resort = resort
         self.status = status
         self.snow = snow
@@ -54,6 +57,7 @@ public struct AppReport: Sendable, Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case config
         case resort
         case status
         case snow
@@ -74,6 +78,7 @@ public struct AppReport: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(config, forKey: .config)
         try container.encode(resort, forKey: .resort)
         try container.encode(status, forKey: .status)
         try container.encode(snow, forKey: .snow)
