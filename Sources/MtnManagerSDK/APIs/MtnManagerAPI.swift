@@ -447,6 +447,52 @@ open class MtnManagerAPI {
     }
 
     /**
+     Get static trail map
+     
+     - parameter uuid: (path) Trail map UUID 
+     - parameter version: (path) The map version being requested (from &#x60;TrailMapSummary.version&#x60;) 
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: TrailMapStatic
+     */
+    open class func getTrailMapStatic(uuid: String, version: Int64, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) async throws(ErrorResponse) -> TrailMapStatic {
+        return try await getTrailMapStaticWithRequestBuilder(uuid: uuid, version: version, acceptLanguage: acceptLanguage, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get static trail map
+     - GET /api/v1/report/trail-map/{uuid}/static/{version}
+     - parameter uuid: (path) Trail map UUID 
+     - parameter version: (path) The map version being requested (from &#x60;TrailMapSummary.version&#x60;) 
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<TrailMapStatic> 
+     */
+    open class func getTrailMapStaticWithRequestBuilder(uuid: String, version: Int64, acceptLanguage: String? = nil, apiConfiguration: MtnManagerSDKAPIConfiguration = MtnManagerSDKAPIConfiguration.shared) -> RequestBuilder<TrailMapStatic> {
+        var localVariablePath = "/api/v1/report/trail-map/{uuid}/static/{version}"
+        let uuidPreEscape = "\(APIHelper.mapValueToPathItem(uuid))"
+        let uuidPostEscape = uuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{uuid}", with: uuidPostEscape, options: .literal, range: nil)
+        let versionPreEscape = "\(APIHelper.mapValueToPathItem(version))"
+        let versionPostEscape = versionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{version}", with: versionPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Accept-Language": acceptLanguage?.asParameter(codableHelper: apiConfiguration.codableHelper),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TrailMapStatic>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get trail maps
      
      - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)

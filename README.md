@@ -32,6 +32,7 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**getSummerTrails**](docs/MtnManagerAPI.md#getsummertrails) | **GET** /api/v1/report/summer-trails | Get summer trails
 *MtnManagerAPI* | [**getTerrainParks**](docs/MtnManagerAPI.md#getterrainparks) | **GET** /api/v1/report/terrain-parks | Get terrain parks
 *MtnManagerAPI* | [**getTrailMap**](docs/MtnManagerAPI.md#gettrailmap) | **GET** /api/v1/report/trail-map/{uuid} | Get trail map
+*MtnManagerAPI* | [**getTrailMapStatic**](docs/MtnManagerAPI.md#gettrailmapstatic) | **GET** /api/v1/report/trail-map/{uuid}/static/{version} | Get static trail map
 *MtnManagerAPI* | [**getTrailMaps**](docs/MtnManagerAPI.md#gettrailmaps) | **GET** /api/v1/report/trail-maps | Get trail maps
 *MtnManagerAPI* | [**getWeather**](docs/MtnManagerAPI.md#getweather) | **GET** /api/v1/report/weather | Get weather
 *MtnManagerAPI* | [**getWebcamHistory**](docs/MtnManagerAPI.md#getwebcamhistory) | **GET** /api/v1/report/webcam/{uuid}/history | Get webcam history
@@ -61,6 +62,7 @@ Class | Method | HTTP request | Description
  - [GeoBounds](docs/GeoBounds.md)
  - [GeoControlPoint](docs/GeoControlPoint.md)
  - [GeoPoint](docs/GeoPoint.md)
+ - [GeometryMode](docs/GeometryMode.md)
  - [HourlyForecast](docs/HourlyForecast.md)
  - [HourlyForecastImperial](docs/HourlyForecastImperial.md)
  - [HourlyForecastMetric](docs/HourlyForecastMetric.md)
@@ -109,6 +111,16 @@ Class | Method | HTTP request | Description
  - [TrailMapElementOneOf5](docs/TrailMapElementOneOf5.md)
  - [TrailMapElementOneOf6](docs/TrailMapElementOneOf6.md)
  - [TrailMapElementOneOf7](docs/TrailMapElementOneOf7.md)
+ - [TrailMapStatic](docs/TrailMapStatic.md)
+ - [TrailMapStaticElement](docs/TrailMapStaticElement.md)
+ - [TrailMapStaticElementOneOf](docs/TrailMapStaticElementOneOf.md)
+ - [TrailMapStaticElementOneOf1](docs/TrailMapStaticElementOneOf1.md)
+ - [TrailMapStaticElementOneOf2](docs/TrailMapStaticElementOneOf2.md)
+ - [TrailMapStaticElementOneOf3](docs/TrailMapStaticElementOneOf3.md)
+ - [TrailMapStaticElementOneOf4](docs/TrailMapStaticElementOneOf4.md)
+ - [TrailMapStaticElementOneOf5](docs/TrailMapStaticElementOneOf5.md)
+ - [TrailMapStaticElementOneOf6](docs/TrailMapStaticElementOneOf6.md)
+ - [TrailMapStaticPath](docs/TrailMapStaticPath.md)
  - [TrailMapSummary](docs/TrailMapSummary.md)
  - [UnitPreference](docs/UnitPreference.md)
  - [Weather](docs/Weather.md)

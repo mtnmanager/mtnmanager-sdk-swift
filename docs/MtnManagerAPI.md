@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**getSummerTrails**](MtnManagerAPI.md#getsummertrails) | **GET** /api/v1/report/summer-trails | Get summer trails
 [**getTerrainParks**](MtnManagerAPI.md#getterrainparks) | **GET** /api/v1/report/terrain-parks | Get terrain parks
 [**getTrailMap**](MtnManagerAPI.md#gettrailmap) | **GET** /api/v1/report/trail-map/{uuid} | Get trail map
+[**getTrailMapStatic**](MtnManagerAPI.md#gettrailmapstatic) | **GET** /api/v1/report/trail-map/{uuid}/static/{version} | Get static trail map
 [**getTrailMaps**](MtnManagerAPI.md#gettrailmaps) | **GET** /api/v1/report/trail-maps | Get trail maps
 [**getWeather**](MtnManagerAPI.md#getweather) | **GET** /api/v1/report/weather | Get weather
 [**getWebcamHistory**](MtnManagerAPI.md#getwebcamhistory) | **GET** /api/v1/report/webcam/{uuid}/history | Get webcam history
@@ -588,6 +589,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TrailMap**](TrailMap.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTrailMapStatic**
+```swift
+    open class func getTrailMapStatic(uuid: String, version: Int64, acceptLanguage: String? = nil, completion: @escaping (_ data: TrailMapStatic?, _ error: Error?) -> Void)
+```
+
+Get static trail map
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import MtnManagerSDK
+
+let uuid = "uuid_example" // String | Trail map UUID
+let version = 987 // Int64 | The map version being requested (from `TrailMapSummary.version`)
+let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+
+// Get static trail map
+MtnManagerAPI.getTrailMapStatic(uuid: uuid, version: version, acceptLanguage: acceptLanguage) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **String** | Trail map UUID | 
+ **version** | **Int64** | The map version being requested (from &#x60;TrailMapSummary.version&#x60;) | 
+ **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
+
+### Return type
+
+[**TrailMapStatic**](TrailMapStatic.md)
 
 ### Authorization
 
