@@ -18,8 +18,8 @@ public struct Overview: Sendable, Codable, Hashable {
     public var closesAt: String?
     /** Current operating season (winter, summer, or closed/off-season). */
     public var season: SeasonType
-    /** Written news — daily update, announcements, etc. */
-    public var news: OverviewNews
+    /** Written news — daily update, announcements, etc. The resort's primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  `raw` and `html`. */
+    public var news: [OverviewNews]
     /** Run statistics: counts, acres, and last-updated timestamp. */
     public var runs: OverviewRuns
     /** Lift statistics: counts and last-updated timestamp. */
@@ -29,7 +29,7 @@ public struct Overview: Sendable, Codable, Hashable {
     /** Terrain park statistics: counts and last-updated timestamp. */
     public var terrainParks: OverviewTerrainParks
 
-    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: OverviewNews, runs: OverviewRuns, lifts: OverviewLifts, summerTrails: OverviewSummerTrails, terrainParks: OverviewTerrainParks) {
+    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: [OverviewNews], runs: OverviewRuns, lifts: OverviewLifts, summerTrails: OverviewSummerTrails, terrainParks: OverviewTerrainParks) {
         self.status = status
         self.opensAt = opensAt
         self.closesAt = closesAt

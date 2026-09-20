@@ -26,8 +26,6 @@ public struct SnowReport: Sendable, Codable, Hashable {
     public var surfaceCondition: SurfaceCondition?
     /** Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) */
     public var secondarySurfaceCondition: SurfaceCondition?
-    /** Additional notes about current snow conditions, e.g. groomer's notes */
-    public var conditionNotes: String
     /** Snowfall accumulation metrics in centimeters. */
     public var snowfallCm: SnowMetrics
     /** Snowfall accumulation metrics in inches. */
@@ -35,7 +33,7 @@ public struct SnowReport: Sendable, Codable, Hashable {
     /** When this snow report was last updated. */
     public var reportedAt: Date
 
-    public init(uuid: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, baseDepthCm: Int? = nil, baseDepthIn: Int? = nil, surfaceCondition: SurfaceCondition? = nil, secondarySurfaceCondition: SurfaceCondition? = nil, conditionNotes: String, snowfallCm: SnowMetrics, snowfallIn: SnowMetrics, reportedAt: Date) {
+    public init(uuid: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, baseDepthCm: Int? = nil, baseDepthIn: Int? = nil, surfaceCondition: SurfaceCondition? = nil, secondarySurfaceCondition: SurfaceCondition? = nil, snowfallCm: SnowMetrics, snowfallIn: SnowMetrics, reportedAt: Date) {
         self.uuid = uuid
         self.areaUuid = areaUuid
         self.areaName = areaName
@@ -44,7 +42,6 @@ public struct SnowReport: Sendable, Codable, Hashable {
         self.baseDepthIn = baseDepthIn
         self.surfaceCondition = surfaceCondition
         self.secondarySurfaceCondition = secondarySurfaceCondition
-        self.conditionNotes = conditionNotes
         self.snowfallCm = snowfallCm
         self.snowfallIn = snowfallIn
         self.reportedAt = reportedAt
@@ -59,7 +56,6 @@ public struct SnowReport: Sendable, Codable, Hashable {
         case baseDepthIn = "base_depth_in"
         case surfaceCondition = "surface_condition"
         case secondarySurfaceCondition = "secondary_surface_condition"
-        case conditionNotes = "condition_notes"
         case snowfallCm = "snowfall_cm"
         case snowfallIn = "snowfall_in"
         case reportedAt = "reported_at"
@@ -77,7 +73,6 @@ public struct SnowReport: Sendable, Codable, Hashable {
         try container.encodeIfPresent(baseDepthIn, forKey: .baseDepthIn)
         try container.encodeIfPresent(surfaceCondition, forKey: .surfaceCondition)
         try container.encodeIfPresent(secondarySurfaceCondition, forKey: .secondarySurfaceCondition)
-        try container.encode(conditionNotes, forKey: .conditionNotes)
         try container.encode(snowfallCm, forKey: .snowfallCm)
         try container.encode(snowfallIn, forKey: .snowfallIn)
         try container.encode(reportedAt, forKey: .reportedAt)

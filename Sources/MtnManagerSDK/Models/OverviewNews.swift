@@ -7,23 +7,35 @@
 
 import Foundation
 
-/** Written news — daily update, announcements, etc. */
+/** Written news — daily update, announcements, etc.   A resort can publish its news in several languages. The one served is the  best match for the request&#39;s &#x60;Accept-Language&#x60; header among them, falling  back to the resort&#39;s primary language when nothing matches or the match has  no news. */
 public struct OverviewNews: Sendable, Codable, Hashable {
 
-    /** Raw Markdown source. */
+    /** Stable identifier of this news feed. */
+    public var uuid: String
+    /** The name the resort gave this news feed, for telling several apart.  May be `null` on the primary news feed. */
+    public var name: String?
+    /** Whether this is the resort's primary news feed. Exactly one news is. */
+    public var isPrimary: Bool
+    /** Markdown source. Images the resort uploaded point at their public URLs,  so any Markdown renderer can display them. */
     public var raw: String
-    /** Rendered HTML (from Markdown). */
+    /** Rendered HTML (from Markdown) */
     public var html: String
     /** When the news was last updated. */
     public var updatedAt: Date
 
-    public init(raw: String, html: String, updatedAt: Date) {
+    public init(uuid: String, name: String? = nil, isPrimary: Bool, raw: String, html: String, updatedAt: Date) {
+        self.uuid = uuid
+        self.name = name
+        self.isPrimary = isPrimary
         self.raw = raw
         self.html = html
         self.updatedAt = updatedAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case uuid
+        case name
+        case isPrimary = "is_primary"
         case raw
         case html
         case updatedAt = "updated_at"
@@ -33,6 +45,9 @@ public struct OverviewNews: Sendable, Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(uuid, forKey: .uuid)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(isPrimary, forKey: .isPrimary)
         try container.encode(raw, forKey: .raw)
         try container.encode(html, forKey: .html)
         try container.encode(updatedAt, forKey: .updatedAt)
