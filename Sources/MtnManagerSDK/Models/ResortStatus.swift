@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Current operational status of the resort. */
+/** Whether the resort is open right now, from today&#39;s scheduled hours. */
 public enum ResortStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"

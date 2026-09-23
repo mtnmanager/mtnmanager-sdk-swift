@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **highSpeed** | **Bool** | Whether this is a high-speed/detachable lift. | 
 **bubble** | **Bool** | Whether the lift has a bubble/cover for weather protection. | 
 **heated** | **Bool** | Whether the lift has heated seats. | 
+**capacity** | **Int** | Riders per chair or cabin, if available. | [optional] 
 **travelTime** | **Double** | Estimated travel time in minutes. | [optional] 
 **lengthFt** | **Int** | Length of the lift in feet. | [optional] 
 **lengthM** | **Int** | Length of the lift in meters. | [optional] 

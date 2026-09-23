@@ -26,6 +26,8 @@ public struct Lift: Sendable, Codable, Hashable {
     public var bubble: Bool
     /** Whether the lift has heated seats. */
     public var heated: Bool
+    /** Riders per chair or cabin, if available. */
+    public var capacity: Int?
     /** Estimated travel time in minutes. */
     public var travelTime: Double?
     /** Length of the lift in feet. */
@@ -55,7 +57,7 @@ public struct Lift: Sendable, Codable, Hashable {
     /** Images attached to this lift, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, travelTime: Double? = nil, lengthFt: Int? = nil, lengthM: Int? = nil, verticalRiseFt: Int? = nil, verticalRiseM: Int? = nil, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, liftType: LiftType, highSpeed: Bool, bubble: Bool, heated: Bool, capacity: Int? = nil, travelTime: Double? = nil, lengthFt: Int? = nil, lengthM: Int? = nil, verticalRiseFt: Int? = nil, verticalRiseM: Int? = nil, status: LiftStatus, waitTimeMinutes: Int64? = nil, opensAt: String? = nil, closesAt: String? = nil, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -64,6 +66,7 @@ public struct Lift: Sendable, Codable, Hashable {
         self.highSpeed = highSpeed
         self.bubble = bubble
         self.heated = heated
+        self.capacity = capacity
         self.travelTime = travelTime
         self.lengthFt = lengthFt
         self.lengthM = lengthM
@@ -89,6 +92,7 @@ public struct Lift: Sendable, Codable, Hashable {
         case highSpeed = "high_speed"
         case bubble
         case heated
+        case capacity
         case travelTime = "travel_time"
         case lengthFt = "length_ft"
         case lengthM = "length_m"
@@ -117,6 +121,7 @@ public struct Lift: Sendable, Codable, Hashable {
         try container.encode(highSpeed, forKey: .highSpeed)
         try container.encode(bubble, forKey: .bubble)
         try container.encode(heated, forKey: .heated)
+        try container.encodeIfPresent(capacity, forKey: .capacity)
         try container.encodeIfPresent(travelTime, forKey: .travelTime)
         try container.encodeIfPresent(lengthFt, forKey: .lengthFt)
         try container.encodeIfPresent(lengthM, forKey: .lengthM)

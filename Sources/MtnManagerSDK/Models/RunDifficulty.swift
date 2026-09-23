@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Difficulty rating for a ski run. */
+/** Difficulty rating for a ski run. Stored as TEXT in &#x60;runs.difficulty&#x60;. */
 public enum RunDifficulty: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case beginner = "beginner"
     case intermediate = "intermediate"
