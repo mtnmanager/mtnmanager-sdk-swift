@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Current operating season of the resort. */
+/** A resort&#39;s season: winter or summer as its weekly operating hours say  (&#x60;OperatingHoursDb::season_type&#x60;), or closed outside every season (see  &#x60;utils::hours::season_on&#x60;). */
 public enum SeasonType: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case winter = "winter"
     case summer = "summer"

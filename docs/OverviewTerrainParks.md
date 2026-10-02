@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **`open`** | **Int64** | Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled. | [optional] 
+**groomed** | **Int64** | Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled. | [optional] 
 **total** | **Int64** | Total number of terrain parks at the resort. | 
 **updatedAt** | **Date** | When the most recent update to terrain park status was made. | 
 

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **slug** | **String** | URL-friendly name of the terrain park. | 
 **number** | **Int** | Optional terrain park number. | [optional] 
 **status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
+**lastGroomed** | **Date** | When the terrain park was last groomed.  &#x60;null&#x60; if never groomed, or if the terrain park grooming feature is disabled. | [optional] 
+**groomedToday** | **Bool** | Whether the terrain park was groomed within the last 24 hours. | 
 **conditionNotes** | **String** | Notes about current conditions in this terrain park. | 
 **areaUuid** | **String** | UUID of the area this terrain park belongs to, if assigned. | [optional] 
 **areaName** | **String** | Name of the area this terrain park belongs to, if assigned. | [optional] 

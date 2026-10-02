@@ -16,6 +16,8 @@ public struct Amenity: Sendable, Codable, Hashable {
     public var uuid: String
     /** Display name of the amenity. */
     public var name: String
+    /** URL-friendly name of the amenity. */
+    public var slug: String
     /** Category classification (e.g. restaurant, lodge, ski_school). */
     public var category: AmenityCategory
     /** Website URL for the amenity, if available. */
@@ -31,10 +33,11 @@ public struct Amenity: Sendable, Codable, Hashable {
     /** Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(description: String, uuid: String, name: String, category: AmenityCategory, website: String, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
+    public init(description: String, uuid: String, name: String, slug: String, category: AmenityCategory, website: String, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
         self.description = description
         self.uuid = uuid
         self.name = name
+        self.slug = slug
         self.category = category
         self.website = website
         self.hasOperatingHours = hasOperatingHours
@@ -48,6 +51,7 @@ public struct Amenity: Sendable, Codable, Hashable {
         case description
         case uuid
         case name
+        case slug
         case category
         case website
         case hasOperatingHours = "has_operating_hours"
@@ -64,6 +68,7 @@ public struct Amenity: Sendable, Codable, Hashable {
         try container.encode(description, forKey: .description)
         try container.encode(uuid, forKey: .uuid)
         try container.encode(name, forKey: .name)
+        try container.encode(slug, forKey: .slug)
         try container.encode(category, forKey: .category)
         try container.encode(website, forKey: .website)
         try container.encode(hasOperatingHours, forKey: .hasOperatingHours)

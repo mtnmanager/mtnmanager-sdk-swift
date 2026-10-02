@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Operational status of a ski run. Stored as TEXT in &#x60;runs.status&#x60;. */
+/** Operational status of a ski run. */
 public enum RunStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"

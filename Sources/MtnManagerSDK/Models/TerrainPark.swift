@@ -20,6 +20,10 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     public var number: Int?
     /** Current operational status (open, closed, or unknown). */
     public var status: TerrainParkStatus
+    /** When the terrain park was last groomed.  `null` if never groomed, or if the terrain park grooming feature is disabled. */
+    public var lastGroomed: Date?
+    /** Whether the terrain park was groomed within the last 24 hours. */
+    public var groomedToday: Bool
     /** Notes about current conditions in this terrain park. */
     public var conditionNotes: String
     /** UUID of the area this terrain park belongs to, if assigned. */
@@ -35,12 +39,14 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     /** Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, lastGroomed: Date? = nil, groomedToday: Bool, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.number = number
         self.status = status
+        self.lastGroomed = lastGroomed
+        self.groomedToday = groomedToday
         self.conditionNotes = conditionNotes
         self.areaUuid = areaUuid
         self.areaName = areaName
@@ -56,6 +62,8 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         case slug
         case number
         case status
+        case lastGroomed = "last_groomed"
+        case groomedToday = "groomed_today"
         case conditionNotes = "condition_notes"
         case areaUuid = "area_uuid"
         case areaName = "area_name"
@@ -74,6 +82,8 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         try container.encode(slug, forKey: .slug)
         try container.encodeIfPresent(number, forKey: .number)
         try container.encode(status, forKey: .status)
+        try container.encodeIfPresent(lastGroomed, forKey: .lastGroomed)
+        try container.encode(groomedToday, forKey: .groomedToday)
         try container.encode(conditionNotes, forKey: .conditionNotes)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
         try container.encodeIfPresent(areaName, forKey: .areaName)
