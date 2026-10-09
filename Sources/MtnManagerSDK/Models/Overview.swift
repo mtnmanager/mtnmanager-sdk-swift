@@ -18,6 +18,10 @@ public struct Overview: Sendable, Codable, Hashable {
     public var closesAt: String?
     /** Current operating season (winter, summer, or closed/off-season). */
     public var season: SeasonType
+    /** The last season to end before today, from the resort's operating  hours of the past year. `null` if there was none. While `season` is  `closed`, this and `next_season` tell an off-season that just ended a  winter from one leading up to a summer. */
+    public var previousSeason: SeasonPeriod?
+    /** The next season to start after today, from the resort's scheduled  operating hours. `null` if none is scheduled yet. */
+    public var nextSeason: SeasonPeriod?
     /** Written news — daily update, announcements, etc. The resort's primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  `raw` and `html`. */
     public var news: [OverviewNews]
     /** Run statistics: counts, acres, and last-updated timestamp. */
@@ -28,17 +32,22 @@ public struct Overview: Sendable, Codable, Hashable {
     public var summerTrails: OverviewSummerTrails
     /** Terrain park statistics: counts and last-updated timestamp. */
     public var terrainParks: OverviewTerrainParks
+    /** Guest powder alerts the resort offers, by channel. */
+    public var powderAlerts: PowderAlerts
 
-    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, news: [OverviewNews], runs: OverviewRuns, lifts: OverviewLifts, summerTrails: OverviewSummerTrails, terrainParks: OverviewTerrainParks) {
+    public init(status: ResortStatus, opensAt: String? = nil, closesAt: String? = nil, season: SeasonType, previousSeason: SeasonPeriod? = nil, nextSeason: SeasonPeriod? = nil, news: [OverviewNews], runs: OverviewRuns, lifts: OverviewLifts, summerTrails: OverviewSummerTrails, terrainParks: OverviewTerrainParks, powderAlerts: PowderAlerts) {
         self.status = status
         self.opensAt = opensAt
         self.closesAt = closesAt
         self.season = season
+        self.previousSeason = previousSeason
+        self.nextSeason = nextSeason
         self.news = news
         self.runs = runs
         self.lifts = lifts
         self.summerTrails = summerTrails
         self.terrainParks = terrainParks
+        self.powderAlerts = powderAlerts
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,11 +55,14 @@ public struct Overview: Sendable, Codable, Hashable {
         case opensAt = "opens_at"
         case closesAt = "closes_at"
         case season
+        case previousSeason = "previous_season"
+        case nextSeason = "next_season"
         case news
         case runs
         case lifts
         case summerTrails = "summer_trails"
         case terrainParks = "terrain_parks"
+        case powderAlerts = "powder_alerts"
     }
 
     // Encodable protocol methods
@@ -61,11 +73,14 @@ public struct Overview: Sendable, Codable, Hashable {
         try container.encodeIfPresent(opensAt, forKey: .opensAt)
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encode(season, forKey: .season)
+        try container.encodeIfPresent(previousSeason, forKey: .previousSeason)
+        try container.encodeIfPresent(nextSeason, forKey: .nextSeason)
         try container.encode(news, forKey: .news)
         try container.encode(runs, forKey: .runs)
         try container.encode(lifts, forKey: .lifts)
         try container.encode(summerTrails, forKey: .summerTrails)
         try container.encode(terrainParks, forKey: .terrainParks)
+        try container.encode(powderAlerts, forKey: .powderAlerts)
     }
 }
 
