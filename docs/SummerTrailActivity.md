@@ -1,4 +1,4 @@
-# SummerTrailType
+# SummerTrailActivity
 
 ## Properties
 Name | Type | Description | Notes

@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **number** | **Int** | Optional run number. | [optional] 
 **difficulty** | [**RunDifficulty**](RunDifficulty.md) | Difficulty rating of the run. | 
 **status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, or unknown). | 
-**lastGroomed** | **Date** | When the run was last groomed.  &#x60;null&#x60; if never groomed, or if the runs grooming feature is disabled. | [optional] 
-**groomedToday** | **Bool** | Whether the run was groomed within the last 24 hours. | 
+**lastGroomed** | **Date** | When the run was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the runs grooming feature is disabled. | [optional] 
+**groomedToday** | **Bool** | Whether the run has been groomed since the resort last closed (or,  for a resort with no operating hours set, within the last 24 hours). | 
+**snowSinceGroomedCm** | **Int** | New snow (cm) reported since &#x60;last_groomed&#x60; (\&quot;groomed with fresh\&quot;).  Absent unless the run was groomed within the last 24 hours and the  resort keeps a snow report. | [optional] 
+**snowSinceGroomedIn** | **Int** | New snow (inches) reported since &#x60;last_groomed&#x60;; see  &#x60;snow_since_groomed_cm&#x60;. | [optional] 
 **snowmaking** | **Bool** | Whether the run has snowmaking capabilities. | 
 **nightSkiing** | **Bool** | Whether the run is available for night skiing. | 
 **conditionNotes** | **String** | Notes about current conditions on this run. | 

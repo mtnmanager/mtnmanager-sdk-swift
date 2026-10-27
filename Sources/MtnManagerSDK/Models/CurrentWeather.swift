@@ -14,7 +14,7 @@ public struct CurrentWeather: Sendable, Codable, Hashable {
     public var imperial: CurrentWeatherImperial
     /** Measurements in metric units */
     public var metric: CurrentWeatherMetric
-    /** Human-readable weather condition */
+    /** Human-readable weather condition, in the `Accept-Language` language */
     public var condition: String
     /** Weather condition code */
     public var conditionCode: WeatherConditionCode

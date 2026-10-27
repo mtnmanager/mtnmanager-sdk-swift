@@ -40,7 +40,7 @@ public struct Lift: Sendable, Codable, Hashable {
     public var verticalRiseM: Int?
     /** Current operational status (open, closed, on_hold, or unknown). */
     public var status: LiftStatus
-    /** Current estimated wait time in minutes, if available. */
+    /** Current estimated wait time in minutes, if available.  Always `null` when the lift is closed. */
     public var waitTimeMinutes: Int64?
     /** Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today. */
     public var opensAt: String?

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **slug** | **String** | URL-friendly name of the amenity. | 
 **category** | [**AmenityCategory**](AmenityCategory.md) | Category classification (e.g. restaurant, lodge, ski_school). | 
 **website** | **String** | Website URL for the amenity, if available. | 
+**status** | [**AmenityStatus**](AmenityStatus.md) | Current operational status (open, closed, or unknown). Always &#x60;unknown&#x60;  when the resort doesn&#39;t track amenity status. | 
 **hasOperatingHours** | **Bool** | Whether this amenity reports operating hours. When false, clients should  not expect &#x60;opens_at&#x60;, &#x60;closes_at&#x60;, or &#x60;schedules&#x60; to ever be populated. | 
 **opensAt** | **String** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **closesAt** | **String** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 

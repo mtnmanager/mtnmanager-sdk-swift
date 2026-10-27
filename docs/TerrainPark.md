@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **slug** | **String** | URL-friendly name of the terrain park. | 
 **number** | **Int** | Optional terrain park number. | [optional] 
 **status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
-**lastGroomed** | **Date** | When the terrain park was last groomed.  &#x60;null&#x60; if never groomed, or if the terrain park grooming feature is disabled. | [optional] 
-**groomedToday** | **Bool** | Whether the terrain park was groomed within the last 24 hours. | 
+**lastGroomed** | **Date** | When the terrain park was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. | [optional] 
+**groomedToday** | **Bool** | Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours). | 
+**snowSinceGroomedCm** | **Int** | New snow (cm) reported since &#x60;last_groomed&#x60;. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report. | [optional] 
+**snowSinceGroomedIn** | **Int** | New snow (inches) reported since &#x60;last_groomed&#x60;; see  &#x60;snow_since_groomed_cm&#x60;. | [optional] 
 **conditionNotes** | **String** | Notes about current conditions in this terrain park. | 
 **areaUuid** | **String** | UUID of the area this terrain park belongs to, if assigned. | [optional] 
 **areaName** | **String** | Name of the area this terrain park belongs to, if assigned. | [optional] 

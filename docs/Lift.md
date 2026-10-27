@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **verticalRiseFt** | **Int** | Vertical rise of the lift in feet. | [optional] 
 **verticalRiseM** | **Int** | Vertical rise of the lift in meters. | [optional] 
 **status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
-**waitTimeMinutes** | **Int64** | Current estimated wait time in minutes, if available. | [optional] 
+**waitTimeMinutes** | **Int64** | Current estimated wait time in minutes, if available.  Always &#x60;null&#x60; when the lift is closed. | [optional] 
 **opensAt** | **String** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **closesAt** | **String** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **areaUuid** | **String** | UUID of the area this lift belongs to, if assigned. | [optional] 

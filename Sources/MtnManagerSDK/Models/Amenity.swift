@@ -22,6 +22,8 @@ public struct Amenity: Sendable, Codable, Hashable {
     public var category: AmenityCategory
     /** Website URL for the amenity, if available. */
     public var website: String
+    /** Current operational status (open, closed, or unknown). Always `unknown`  when the resort doesn't track amenity status. */
+    public var status: AmenityStatus
     /** Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated. */
     public var hasOperatingHours: Bool
     /** Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone. */
@@ -33,13 +35,14 @@ public struct Amenity: Sendable, Codable, Hashable {
     /** Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(description: String, uuid: String, name: String, slug: String, category: AmenityCategory, website: String, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
+    public init(description: String, uuid: String, name: String, slug: String, category: AmenityCategory, website: String, status: AmenityStatus, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
         self.description = description
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.category = category
         self.website = website
+        self.status = status
         self.hasOperatingHours = hasOperatingHours
         self.opensAt = opensAt
         self.closesAt = closesAt
@@ -54,6 +57,7 @@ public struct Amenity: Sendable, Codable, Hashable {
         case slug
         case category
         case website
+        case status
         case hasOperatingHours = "has_operating_hours"
         case opensAt = "opens_at"
         case closesAt = "closes_at"
@@ -71,6 +75,7 @@ public struct Amenity: Sendable, Codable, Hashable {
         try container.encode(slug, forKey: .slug)
         try container.encode(category, forKey: .category)
         try container.encode(website, forKey: .website)
+        try container.encode(status, forKey: .status)
         try container.encode(hasOperatingHours, forKey: .hasOperatingHours)
         try container.encodeIfPresent(opensAt, forKey: .opensAt)
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
@@ -83,6 +88,7 @@ public struct Amenity: Sendable, Codable, Hashable {
 extension Amenity: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if category == .unknownDefaultOpenApi { return true }
+        if status == .unknownDefaultOpenApi { return true }
         return false
     }
 }

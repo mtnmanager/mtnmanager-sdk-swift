@@ -22,7 +22,7 @@ public struct TerrainParkFeature: Sendable, Codable, Hashable {
     public var featureType: FeatureType
     /** Optional size rating of the feature (S, M, L, XL). */
     public var size: FeatureSize?
-    /** Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled. */
+    /** Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled; `closed`  whenever its terrain park is closed. */
     public var status: TerrainParkFeatureStatus
     /** Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?

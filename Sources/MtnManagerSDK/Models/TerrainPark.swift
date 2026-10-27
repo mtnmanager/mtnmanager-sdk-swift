@@ -20,10 +20,14 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     public var number: Int?
     /** Current operational status (open, closed, or unknown). */
     public var status: TerrainParkStatus
-    /** When the terrain park was last groomed.  `null` if never groomed, or if the terrain park grooming feature is disabled. */
+    /** When the terrain park was last groomed.  `null` if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. */
     public var lastGroomed: Date?
-    /** Whether the terrain park was groomed within the last 24 hours. */
+    /** Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours). */
     public var groomedToday: Bool
+    /** New snow (cm) reported since `last_groomed`. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report. */
+    public var snowSinceGroomedCm: Int?
+    /** New snow (inches) reported since `last_groomed`; see  `snow_since_groomed_cm`. */
+    public var snowSinceGroomedIn: Int?
     /** Notes about current conditions in this terrain park. */
     public var conditionNotes: String
     /** UUID of the area this terrain park belongs to, if assigned. */
@@ -39,7 +43,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     /** Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, lastGroomed: Date? = nil, groomedToday: Bool, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, lastGroomed: Date? = nil, groomedToday: Bool, snowSinceGroomedCm: Int? = nil, snowSinceGroomedIn: Int? = nil, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -47,6 +51,8 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         self.status = status
         self.lastGroomed = lastGroomed
         self.groomedToday = groomedToday
+        self.snowSinceGroomedCm = snowSinceGroomedCm
+        self.snowSinceGroomedIn = snowSinceGroomedIn
         self.conditionNotes = conditionNotes
         self.areaUuid = areaUuid
         self.areaName = areaName
@@ -64,6 +70,8 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         case status
         case lastGroomed = "last_groomed"
         case groomedToday = "groomed_today"
+        case snowSinceGroomedCm = "snow_since_groomed_cm"
+        case snowSinceGroomedIn = "snow_since_groomed_in"
         case conditionNotes = "condition_notes"
         case areaUuid = "area_uuid"
         case areaName = "area_name"
@@ -84,6 +92,8 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(lastGroomed, forKey: .lastGroomed)
         try container.encode(groomedToday, forKey: .groomedToday)
+        try container.encodeIfPresent(snowSinceGroomedCm, forKey: .snowSinceGroomedCm)
+        try container.encodeIfPresent(snowSinceGroomedIn, forKey: .snowSinceGroomedIn)
         try container.encode(conditionNotes, forKey: .conditionNotes)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
         try container.encodeIfPresent(areaName, forKey: .areaName)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** Represents a single summer trail at the resort with its current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. */
+/** Represents a single summer trail at the resort with its current status,  activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating. */
 public struct SummerTrail: Sendable, Codable, Hashable {
 
     /** Unique identifier for the trail. */
@@ -18,10 +18,12 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     public var slug: String
     /** Optional trail number. */
     public var number: Int?
-    /** Type of trail activity (e.g. hiking, mountain_biking). Can have multiple. */
-    public var trailType: [SummerTrailType]
+    /** Activities the trail is open to (e.g. hiking, mountain_biking,  on_leash_dogs). Can have multiple. */
+    public var activities: [SummerTrailActivity]
     /** Difficulty rating of the trail (optional for summer trails). */
     public var difficulty: SummerTrailDifficulty?
+    /** The rating system the difficulty is shown in, which picks its icon:  `null` for the standard one, or a mountain-bike freeride / technical one. */
+    public var difficultyType: SummerTrailDifficultyType?
     /** Current operational status (open, closed, or unknown). */
     public var status: SummerTrailStatus
     /** Notes about current conditions on this trail. */
@@ -37,13 +39,14 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     /** Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, trailType: [SummerTrailType], difficulty: SummerTrailDifficulty? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, activities: [SummerTrailActivity], difficulty: SummerTrailDifficulty? = nil, difficultyType: SummerTrailDifficultyType? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.number = number
-        self.trailType = trailType
+        self.activities = activities
         self.difficulty = difficulty
+        self.difficultyType = difficultyType
         self.status = status
         self.conditionNotes = conditionNotes
         self.areaUuid = areaUuid
@@ -58,8 +61,9 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         case name
         case slug
         case number
-        case trailType = "trail_type"
+        case activities
         case difficulty
+        case difficultyType = "difficulty_type"
         case status
         case conditionNotes = "condition_notes"
         case areaUuid = "area_uuid"
@@ -77,8 +81,9 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(slug, forKey: .slug)
         try container.encodeIfPresent(number, forKey: .number)
-        try container.encode(trailType, forKey: .trailType)
+        try container.encode(activities, forKey: .activities)
         try container.encodeIfPresent(difficulty, forKey: .difficulty)
+        try container.encodeIfPresent(difficultyType, forKey: .difficultyType)
         try container.encode(status, forKey: .status)
         try container.encode(conditionNotes, forKey: .conditionNotes)
         try container.encodeIfPresent(areaUuid, forKey: .areaUuid)
@@ -93,6 +98,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
 extension SummerTrail: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if difficulty == .unknownDefaultOpenApi { return true }
+        if difficultyType == .unknownDefaultOpenApi { return true }
         if status == .unknownDefaultOpenApi { return true }
         return false
     }

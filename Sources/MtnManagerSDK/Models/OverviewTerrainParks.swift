@@ -12,7 +12,7 @@ public struct OverviewTerrainParks: Sendable, Codable, Hashable {
 
     /** Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled. */
     public var `open`: Int64?
-    /** Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled. */
+    /** Number of terrain parks groomed since the resort last closed (see  `groomed_today`).  Not included if the terrain park grooming feature is disabled. */
     public var groomed: Int64?
     /** Total number of terrain parks at the resort. */
     public var total: Int64

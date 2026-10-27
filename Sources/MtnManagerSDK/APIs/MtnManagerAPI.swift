@@ -12,7 +12,7 @@ open class MtnManagerAPI {
     /**
      Get amenities
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Amenity]
      */
@@ -23,7 +23,7 @@ open class MtnManagerAPI {
     /**
      Get amenities
      - GET /api/v1/report/amenities
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Amenity]> 
      */
@@ -48,7 +48,7 @@ open class MtnManagerAPI {
     /**
      Get app report
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: AppReport
      */
@@ -59,7 +59,7 @@ open class MtnManagerAPI {
     /**
      Get app report
      - GET /api/v1/report/app
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<AppReport> 
      */
@@ -84,7 +84,7 @@ open class MtnManagerAPI {
     /**
      Get full report
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: FullReport
      */
@@ -95,7 +95,7 @@ open class MtnManagerAPI {
     /**
      Get full report
      - GET /api/v1/report
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<FullReport> 
      */
@@ -120,7 +120,7 @@ open class MtnManagerAPI {
     /**
      Get operating hours
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: OperatingHours
      */
@@ -131,7 +131,7 @@ open class MtnManagerAPI {
     /**
      Get operating hours
      - GET /api/v1/report/hours
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<OperatingHours> 
      */
@@ -156,7 +156,7 @@ open class MtnManagerAPI {
     /**
      Get lifts
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Lift]
      */
@@ -167,7 +167,7 @@ open class MtnManagerAPI {
     /**
      Get lifts
      - GET /api/v1/report/lifts
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Lift]> 
      */
@@ -192,7 +192,7 @@ open class MtnManagerAPI {
     /**
      Get overview
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: Overview
      */
@@ -203,7 +203,7 @@ open class MtnManagerAPI {
     /**
      Get overview
      - GET /api/v1/report/overview
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Overview> 
      */
@@ -228,7 +228,7 @@ open class MtnManagerAPI {
     /**
      Get parking lots
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [ParkingLot]
      */
@@ -239,7 +239,7 @@ open class MtnManagerAPI {
     /**
      Get parking lots
      - GET /api/v1/report/parking-lots
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[ParkingLot]> 
      */
@@ -264,7 +264,7 @@ open class MtnManagerAPI {
     /**
      Get runs
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Run]
      */
@@ -275,7 +275,7 @@ open class MtnManagerAPI {
     /**
      Get runs
      - GET /api/v1/report/runs
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Run]> 
      */
@@ -300,7 +300,7 @@ open class MtnManagerAPI {
     /**
      Get snow conditions
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SnowReport]
      */
@@ -311,7 +311,7 @@ open class MtnManagerAPI {
     /**
      Get snow conditions
      - GET /api/v1/report/snow
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[SnowReport]> 
      */
@@ -336,7 +336,7 @@ open class MtnManagerAPI {
     /**
      Get summer trails
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [SummerTrail]
      */
@@ -347,7 +347,7 @@ open class MtnManagerAPI {
     /**
      Get summer trails
      - GET /api/v1/report/summer-trails
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[SummerTrail]> 
      */
@@ -372,7 +372,7 @@ open class MtnManagerAPI {
     /**
      Get terrain parks
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [TerrainPark]
      */
@@ -383,7 +383,7 @@ open class MtnManagerAPI {
     /**
      Get terrain parks
      - GET /api/v1/report/terrain-parks
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[TerrainPark]> 
      */
@@ -409,7 +409,7 @@ open class MtnManagerAPI {
      Get trail map
      
      - parameter uuid: (path) Resource UUID 
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: TrailMap
      */
@@ -421,7 +421,7 @@ open class MtnManagerAPI {
      Get trail map
      - GET /api/v1/report/trail-map/{uuid}
      - parameter uuid: (path) Resource UUID 
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<TrailMap> 
      */
@@ -451,7 +451,7 @@ open class MtnManagerAPI {
      
      - parameter uuid: (path) Trail map UUID 
      - parameter version: (path) The map version being requested (from &#x60;TrailMapSummary.version&#x60;) 
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: TrailMapStatic
      */
@@ -464,7 +464,7 @@ open class MtnManagerAPI {
      - GET /api/v1/report/trail-map/{uuid}/static/{version}
      - parameter uuid: (path) Trail map UUID 
      - parameter version: (path) The map version being requested (from &#x60;TrailMapSummary.version&#x60;) 
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<TrailMapStatic> 
      */
@@ -495,7 +495,7 @@ open class MtnManagerAPI {
     /**
      Get trail maps
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [TrailMapSummary]
      */
@@ -506,7 +506,7 @@ open class MtnManagerAPI {
     /**
      Get trail maps
      - GET /api/v1/report/trail-maps
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[TrailMapSummary]> 
      */
@@ -531,7 +531,7 @@ open class MtnManagerAPI {
     /**
      Get weather
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Weather]
      */
@@ -542,7 +542,7 @@ open class MtnManagerAPI {
     /**
      Get weather
      - GET /api/v1/report/weather
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Weather]> 
      */
@@ -570,7 +570,7 @@ open class MtnManagerAPI {
      - parameter uuid: (path) Resource UUID 
      - parameter from: (query) Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
      - parameter to: (query) Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: WebcamHistoryResponse
      */
@@ -584,7 +584,7 @@ open class MtnManagerAPI {
      - parameter uuid: (path) Resource UUID 
      - parameter from: (query) Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
      - parameter to: (query) Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). (optional, default to "null")
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<WebcamHistoryResponse> 
      */
@@ -616,7 +616,7 @@ open class MtnManagerAPI {
     /**
      Get webcams
      
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: [Webcam]
      */
@@ -627,7 +627,7 @@ open class MtnManagerAPI {
     /**
      Get webcams
      - GET /api/v1/report/webcams
-     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
+     - parameter acceptLanguage: (header) Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[Webcam]> 
      */

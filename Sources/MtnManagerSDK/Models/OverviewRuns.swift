@@ -12,7 +12,7 @@ public struct OverviewRuns: Sendable, Codable, Hashable {
 
     /** Number of runs currently open.  Not included if the runs status feature is disabled. */
     public var `open`: Int64?
-    /** Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled. */
+    /** Number of runs groomed since the resort last closed (see `groomed_today`).  Not included if the runs grooming feature is disabled. */
     public var groomed: Int64?
     /** Total number of runs at the resort. */
     public var total: Int64

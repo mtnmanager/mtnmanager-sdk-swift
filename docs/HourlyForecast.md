@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **timestamp** | **Date** | Forecast timestamp | 
 **imperial** | [**HourlyForecastImperial**](HourlyForecastImperial.md) | Measurements in imperial units | 
 **metric** | [**HourlyForecastMetric**](HourlyForecastMetric.md) | Measurements in metric units | 
-**condition** | **String** | Human-readable condition | 
+**condition** | **String** | Human-readable condition, in the &#x60;Accept-Language&#x60; language | 
 **conditionCode** | [**WeatherConditionCode**](WeatherConditionCode.md) | Weather condition code | 
 **precipitationProbability** | **Int** | Probability of precipitation (0-100%) | [optional] 
 

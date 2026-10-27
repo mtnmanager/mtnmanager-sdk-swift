@@ -16,7 +16,7 @@ public struct HourlyForecast: Sendable, Codable, Hashable {
     public var imperial: HourlyForecastImperial
     /** Measurements in metric units */
     public var metric: HourlyForecastMetric
-    /** Human-readable condition */
+    /** Human-readable condition, in the `Accept-Language` language */
     public var condition: String
     /** Weather condition code */
     public var conditionCode: WeatherConditionCode
