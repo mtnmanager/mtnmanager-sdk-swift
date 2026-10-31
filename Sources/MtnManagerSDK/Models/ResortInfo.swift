@@ -22,16 +22,19 @@ public struct ResortInfo: Sendable, Codable, Hashable {
     public var region: Region
     /** Preferred unit system for measurements (metric or imperial). */
     public var unitPreference: UnitPreference
+    /** The language human-readable strings are served in when the request's  `Accept-Language` names no supported language. */
+    public var defaultLanguage: Language
     /** Full public URL to the resort's logo image. `null` if no logo is set. */
     public var logoUrl: String?
 
-    public init(uuid: String, name: String, slug: String, timezone: String, region: Region, unitPreference: UnitPreference, logoUrl: String? = nil) {
+    public init(uuid: String, name: String, slug: String, timezone: String, region: Region, unitPreference: UnitPreference, defaultLanguage: Language, logoUrl: String? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
         self.timezone = timezone
         self.region = region
         self.unitPreference = unitPreference
+        self.defaultLanguage = defaultLanguage
         self.logoUrl = logoUrl
     }
 
@@ -42,6 +45,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         case timezone
         case region
         case unitPreference = "unit_preference"
+        case defaultLanguage = "default_language"
         case logoUrl = "logo_url"
     }
 
@@ -55,6 +59,7 @@ public struct ResortInfo: Sendable, Codable, Hashable {
         try container.encode(timezone, forKey: .timezone)
         try container.encode(region, forKey: .region)
         try container.encode(unitPreference, forKey: .unitPreference)
+        try container.encode(defaultLanguage, forKey: .defaultLanguage)
         try container.encodeIfPresent(logoUrl, forKey: .logoUrl)
     }
 }
@@ -64,6 +69,7 @@ extension ResortInfo: UnknownCaseCheckable {
     public var containsUnknownDefaultOpenApiCase: Bool {
         if region == .unknownDefaultOpenApi { return true }
         if unitPreference == .unknownDefaultOpenApi { return true }
+        if defaultLanguage == .unknownDefaultOpenApi { return true }
         return false
     }
 }

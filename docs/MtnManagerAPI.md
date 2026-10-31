@@ -751,7 +751,7 @@ No authorization required
 
 # **getWebcamHistory**
 ```swift
-    open class func getWebcamHistory(uuid: String, from: String? = nil, to: String? = nil, acceptLanguage: String? = nil, completion: @escaping (_ data: WebcamHistoryResponse?, _ error: Error?) -> Void)
+    open class func getWebcamHistory(uuid: String, acceptLanguage: String? = nil, completion: @escaping (_ data: WebcamHistoryResponse?, _ error: Error?) -> Void)
 ```
 
 Get webcam history
@@ -762,12 +762,10 @@ Get webcam history
 import MtnManagerSDK
 
 let uuid = "uuid_example" // String | Resource UUID
-let from = "from_example" // String | Inclusive lower bound on `captured_at` (RFC 3339). (optional) (default to "null")
-let to = "to_example" // String | Inclusive upper bound on `captured_at` (RFC 3339). (optional) (default to "null")
 let acceptLanguage = "acceptLanguage_example" // String | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 // Get webcam history
-MtnManagerAPI.getWebcamHistory(uuid: uuid, from: from, to: to, acceptLanguage: acceptLanguage) { (response, error) in
+MtnManagerAPI.getWebcamHistory(uuid: uuid, acceptLanguage: acceptLanguage) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -784,8 +782,6 @@ MtnManagerAPI.getWebcamHistory(uuid: uuid, from: from, to: to, acceptLanguage: a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uuid** | **String** | Resource UUID | 
- **from** | **String** | Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). | [optional] [default to &quot;null&quot;]
- **to** | **String** | Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). | [optional] [default to &quot;null&quot;]
  **acceptLanguage** | **String** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | [optional] 
 
 ### Return type

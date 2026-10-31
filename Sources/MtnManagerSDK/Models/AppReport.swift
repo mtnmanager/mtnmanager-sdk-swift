@@ -27,10 +27,6 @@ public struct AppReport: Sendable, Codable, Hashable {
     /** List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. */
     public var summerTrails: [SummerTrail]
     public var hours: OperatingHours
-    /** Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. */
-    public var weather: [Weather]?
-    /** Enabled webcams with the URLs of their current and last-daylight frames  plus thumbnails. Empty when the resort does not have webcams. */
-    public var webcams: [Webcam]?
     /** All amenities at the resort — identical to `GET /api/v1/report/amenities`. */
     public var amenities: [Amenity]
     /** Trail-map summaries — identical to `GET /api/v1/report/trail-maps`.  Empty when the `trail_maps` feature is not enabled for the resort. */
@@ -38,7 +34,7 @@ public struct AppReport: Sendable, Codable, Hashable {
     /** Mobile-app banners, in display order. */
     public var appBanners: [MobileAppBanner]
 
-    public init(config: AppConfig, resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil, webcams: [Webcam]? = nil, amenities: [Amenity], trailMaps: [TrailMapSummary]? = nil, appBanners: [MobileAppBanner]) {
+    public init(config: AppConfig, resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, amenities: [Amenity], trailMaps: [TrailMapSummary]? = nil, appBanners: [MobileAppBanner]) {
         self.config = config
         self.resort = resort
         self.status = status
@@ -49,8 +45,6 @@ public struct AppReport: Sendable, Codable, Hashable {
         self.parkingLots = parkingLots
         self.summerTrails = summerTrails
         self.hours = hours
-        self.weather = weather
-        self.webcams = webcams
         self.amenities = amenities
         self.trailMaps = trailMaps
         self.appBanners = appBanners
@@ -67,8 +61,6 @@ public struct AppReport: Sendable, Codable, Hashable {
         case parkingLots = "parking_lots"
         case summerTrails = "summer_trails"
         case hours
-        case weather
-        case webcams
         case amenities
         case trailMaps = "trail_maps"
         case appBanners = "app_banners"
@@ -88,8 +80,6 @@ public struct AppReport: Sendable, Codable, Hashable {
         try container.encode(parkingLots, forKey: .parkingLots)
         try container.encode(summerTrails, forKey: .summerTrails)
         try container.encode(hours, forKey: .hours)
-        try container.encodeIfPresent(weather, forKey: .weather)
-        try container.encodeIfPresent(webcams, forKey: .webcams)
         try container.encode(amenities, forKey: .amenities)
         try container.encodeIfPresent(trailMaps, forKey: .trailMaps)
         try container.encode(appBanners, forKey: .appBanners)

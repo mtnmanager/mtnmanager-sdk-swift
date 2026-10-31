@@ -7,7 +7,7 @@
 
 import Foundation
 
-/** The all-in-one endpoint containing the full report — resort information, current status,  runs, lifts, snow, terrain parks, summer trails, hours, and weather. */
+/** The all-in-one endpoint containing the full report — resort information, current status,  runs, lifts, snow, terrain parks, summer trails, and hours. Weather and webcams  have their own endpoints. */
 public struct FullReport: Sendable, Codable, Hashable {
 
     public var resort: ResortInfo
@@ -25,12 +25,8 @@ public struct FullReport: Sendable, Codable, Hashable {
     /** List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. */
     public var summerTrails: [SummerTrail]
     public var hours: OperatingHours
-    /** Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. */
-    public var weather: [Weather]?
-    /** Enabled webcams with the URLs of their current and last-daylight frames  plus thumbnails. Empty when the resort does not have webcams. */
-    public var webcams: [Webcam]?
 
-    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours, weather: [Weather]? = nil, webcams: [Webcam]? = nil) {
+    public init(resort: ResortInfo, status: Overview, snow: [SnowReport], lifts: [Lift], runs: [Run], terrainParks: [TerrainPark], parkingLots: [ParkingLot], summerTrails: [SummerTrail], hours: OperatingHours) {
         self.resort = resort
         self.status = status
         self.snow = snow
@@ -40,8 +36,6 @@ public struct FullReport: Sendable, Codable, Hashable {
         self.parkingLots = parkingLots
         self.summerTrails = summerTrails
         self.hours = hours
-        self.weather = weather
-        self.webcams = webcams
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -54,8 +48,6 @@ public struct FullReport: Sendable, Codable, Hashable {
         case parkingLots = "parking_lots"
         case summerTrails = "summer_trails"
         case hours
-        case weather
-        case webcams
     }
 
     // Encodable protocol methods
@@ -71,8 +63,6 @@ public struct FullReport: Sendable, Codable, Hashable {
         try container.encode(parkingLots, forKey: .parkingLots)
         try container.encode(summerTrails, forKey: .summerTrails)
         try container.encode(hours, forKey: .hours)
-        try container.encodeIfPresent(weather, forKey: .weather)
-        try container.encodeIfPresent(webcams, forKey: .webcams)
     }
 }
 
