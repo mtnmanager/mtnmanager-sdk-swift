@@ -7,22 +7,26 @@
 
 import Foundation
 
-/** Guest powder alerts the resort offers. Both are &#x60;false&#x60; when the resort  doesn&#39;t offer powder alerts. */
+/** Guest powder alerts the resort offers. Both channels are &#x60;false&#x60; (and  &#x60;privacy_policy_url&#x60; is &#x60;null&#x60;) when the resort doesn&#39;t offer powder alerts. */
 public struct PowderAlerts: Sendable, Codable, Hashable {
 
     /** Guests can sign up for text alerts via  `POST /api/notifications/v1/text/powder/signup` on the resort's host. */
     public var text: Bool
     /** Guests can subscribe to push alerts in the resort's mobile app. */
     public var push: Bool
+    /** Privacy policy to show guests when they sign up for powder alerts.  Present whenever at least one channel is offered. */
+    public var privacyPolicyUrl: String?
 
-    public init(text: Bool, push: Bool) {
+    public init(text: Bool, push: Bool, privacyPolicyUrl: String? = nil) {
         self.text = text
         self.push = push
+        self.privacyPolicyUrl = privacyPolicyUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case text
         case push
+        case privacyPolicyUrl = "privacy_policy_url"
     }
 
     // Encodable protocol methods
@@ -31,6 +35,7 @@ public struct PowderAlerts: Sendable, Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(text, forKey: .text)
         try container.encode(push, forKey: .push)
+        try container.encodeIfPresent(privacyPolicyUrl, forKey: .privacyPolicyUrl)
     }
 }
 
