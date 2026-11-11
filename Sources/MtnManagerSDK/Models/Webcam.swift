@@ -32,8 +32,10 @@ public struct Webcam: Sendable, Codable, Hashable {
     public var elevationM: Int?
     /** Time of the most recently published frame; omitted until the first frame. */
     public var lastFrameAt: String?
+    /** Whether it is currently daylight at the resort, counting civil twilight  (the sun within 6° below the horizon) as daylight. Always `true` when the  resort has no location configured. */
+    public var isDaylight: Bool
 
-    public init(uuid: String, name: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, latestImageUrl: String, latestDaylightImageUrl: String, latestThumbUrl: String, latestDaylightThumbUrl: String, latestThumbhash: String, latestDaylightThumbhash: String, hasHistory: Bool, elevationFt: Int? = nil, elevationM: Int? = nil, lastFrameAt: String? = nil) {
+    public init(uuid: String, name: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, latestImageUrl: String, latestDaylightImageUrl: String, latestThumbUrl: String, latestDaylightThumbUrl: String, latestThumbhash: String, latestDaylightThumbhash: String, hasHistory: Bool, elevationFt: Int? = nil, elevationM: Int? = nil, lastFrameAt: String? = nil, isDaylight: Bool) {
         self.uuid = uuid
         self.name = name
         self.areaUuid = areaUuid
@@ -49,6 +51,7 @@ public struct Webcam: Sendable, Codable, Hashable {
         self.elevationFt = elevationFt
         self.elevationM = elevationM
         self.lastFrameAt = lastFrameAt
+        self.isDaylight = isDaylight
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -67,6 +70,7 @@ public struct Webcam: Sendable, Codable, Hashable {
         case elevationFt = "elevation_ft"
         case elevationM = "elevation_m"
         case lastFrameAt = "last_frame_at"
+        case isDaylight = "is_daylight"
     }
 
     // Encodable protocol methods
@@ -88,6 +92,7 @@ public struct Webcam: Sendable, Codable, Hashable {
         try container.encodeIfPresent(elevationFt, forKey: .elevationFt)
         try container.encodeIfPresent(elevationM, forKey: .elevationM)
         try container.encodeIfPresent(lastFrameAt, forKey: .lastFrameAt)
+        try container.encode(isDaylight, forKey: .isDaylight)
     }
 }
 

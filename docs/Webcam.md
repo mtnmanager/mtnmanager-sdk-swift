@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **elevationFt** | **Int** | Camera elevation in both units; omitted when unset. | [optional] 
 **elevationM** | **Int** |  | [optional] 
 **lastFrameAt** | **String** | Time of the most recently published frame; omitted until the first frame. | [optional] 
+**isDaylight** | **Bool** | Whether it is currently daylight at the resort, counting civil twilight  (the sun within 6° below the horizon) as daylight. Always &#x60;true&#x60; when the  resort has no location configured. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,7 +13,7 @@ public struct WebcamHistoryFrame: Sendable, Codable, Hashable {
     public var capturedAt: String
     public var imageUrl: String
     public var thumbUrl: String
-    /** ThumbHash of the frame (standard base64), recovered from the thumb object's  key. Empty string for legacy frames archived without one. */
+    /** ThumbHash of the frame (standard base64). */
     public var thumbhash: String
 
     public init(capturedAt: String, imageUrl: String, thumbUrl: String, thumbhash: String) {
