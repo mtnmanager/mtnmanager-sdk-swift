@@ -13,6 +13,7 @@ public enum AmenityCategory: String, Sendable, Codable, CaseIterable, CaseIterab
     case coffee = "coffee"
     case bar = "bar"
     case tubing = "tubing"
+    case skating = "skating"
     case skiSchool = "ski_school"
     case rentalShop = "rental_shop"
     case daycare = "daycare"

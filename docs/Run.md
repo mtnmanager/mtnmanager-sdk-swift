@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **slug** | **String** | URL-friendly name of the run. | 
 **number** | **Int** | Optional run number. | [optional] 
 **difficulty** | [**RunDifficulty**](RunDifficulty.md) | Difficulty rating of the run. | 
-**status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, or unknown). | 
+**status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **lastGroomed** | **Date** | When the run was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the runs grooming feature is disabled. | [optional] 
 **groomedToday** | **Bool** | Whether the run has been groomed since the resort last closed (or,  for a resort with no operating hours set, within the last 24 hours). | 
 **snowSinceGroomedCm** | **Int** | New snow (cm) reported since &#x60;last_groomed&#x60; (\&quot;groomed with fresh\&quot;).  Absent unless the run was groomed within the last 24 hours and the  resort keeps a snow report. | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **areaName** | **String** | Name of the area this run belongs to, if assigned. | [optional] 
 **areaDisplayOrder** | **Int** | Display order of the area this run belongs to, if assigned, for sorting purposes. | [optional] 
 **updatedAt** | **Date** | When this run&#39;s information was last updated. | 
+**lifts** | [LinkedLift] | The lifts that give access to this run, in lift display order.  Empty when none are set. | [optional] 
 **images** | [EntityImage] | Images attached to this run, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

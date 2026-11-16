@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **activities** | [SummerTrailActivity] | Activities the trail is open to (e.g. hiking, mountain_biking,  on_leash_dogs). Can have multiple. | 
 **difficulty** | [**SummerTrailDifficulty**](SummerTrailDifficulty.md) | Difficulty rating of the trail (optional for summer trails). | [optional] 
 **difficultyType** | [**SummerTrailDifficultyType**](SummerTrailDifficultyType.md) | The rating system the difficulty is shown in, which picks its icon:  &#x60;null&#x60; for the standard one, or a mountain-bike freeride / technical one. | [optional] 
-**status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, or unknown). | 
+**status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **conditionNotes** | **String** | Notes about current conditions on this trail. | 
 **areaUuid** | **String** | UUID of the area this trail belongs to, if assigned. | [optional] 
 **areaName** | **String** | Name of the area this trail belongs to, if assigned. | [optional] 
 **areaDisplayOrder** | **Int** | Display order of the area this trail belongs to, if assigned, for sorting purposes. | [optional] 
 **updatedAt** | **Date** | When this trail&#39;s information was last updated. | 
+**lifts** | [LinkedLift] | The lifts that give access to this trail, in lift display order.  Empty when none are set. | [optional] 
 **images** | [EntityImage] | Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

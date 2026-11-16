@@ -18,7 +18,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     public var slug: String
     /** Optional terrain park number. */
     public var number: Int?
-    /** Current operational status (open, closed, or unknown). */
+    /** Current operational status (open, closed, on_hold, or unknown). */
     public var status: TerrainParkStatus
     /** When the terrain park was last groomed.  `null` if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. */
     public var lastGroomed: Date?
@@ -40,10 +40,12 @@ public struct TerrainPark: Sendable, Codable, Hashable {
     public var features: [TerrainParkFeature]
     /** When this terrain park or any of its features was last updated. */
     public var updatedAt: Date
+    /** The lifts that give access to this terrain park, in lift display order.  Empty when none are set. */
+    public var lifts: [LinkedLift]?
     /** Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, lastGroomed: Date? = nil, groomedToday: Bool, snowSinceGroomedCm: Int? = nil, snowSinceGroomedIn: Int? = nil, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, status: TerrainParkStatus, lastGroomed: Date? = nil, groomedToday: Bool, snowSinceGroomedCm: Int? = nil, snowSinceGroomedIn: Int? = nil, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, features: [TerrainParkFeature], updatedAt: Date, lifts: [LinkedLift]? = nil, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -59,6 +61,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         self.areaDisplayOrder = areaDisplayOrder
         self.features = features
         self.updatedAt = updatedAt
+        self.lifts = lifts
         self.images = images
     }
 
@@ -78,6 +81,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         case areaDisplayOrder = "area_display_order"
         case features
         case updatedAt = "updated_at"
+        case lifts
         case images
     }
 
@@ -100,6 +104,7 @@ public struct TerrainPark: Sendable, Codable, Hashable {
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(features, forKey: .features)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(lifts, forKey: .lifts)
         try container.encodeIfPresent(images, forKey: .images)
     }
 }

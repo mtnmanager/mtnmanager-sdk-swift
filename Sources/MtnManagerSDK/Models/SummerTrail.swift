@@ -24,7 +24,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     public var difficulty: SummerTrailDifficulty?
     /** The rating system the difficulty is shown in, which picks its icon:  `null` for the standard one, or a mountain-bike freeride / technical one. */
     public var difficultyType: SummerTrailDifficultyType?
-    /** Current operational status (open, closed, or unknown). */
+    /** Current operational status (open, closed, on_hold, or unknown). */
     public var status: SummerTrailStatus
     /** Notes about current conditions on this trail. */
     public var conditionNotes: String
@@ -36,10 +36,12 @@ public struct SummerTrail: Sendable, Codable, Hashable {
     public var areaDisplayOrder: Int?
     /** When this trail's information was last updated. */
     public var updatedAt: Date
+    /** The lifts that give access to this trail, in lift display order.  Empty when none are set. */
+    public var lifts: [LinkedLift]?
     /** Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(uuid: String, name: String, slug: String, number: Int? = nil, activities: [SummerTrailActivity], difficulty: SummerTrailDifficulty? = nil, difficultyType: SummerTrailDifficultyType? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, images: [EntityImage]? = nil) {
+    public init(uuid: String, name: String, slug: String, number: Int? = nil, activities: [SummerTrailActivity], difficulty: SummerTrailDifficulty? = nil, difficultyType: SummerTrailDifficultyType? = nil, status: SummerTrailStatus, conditionNotes: String, areaUuid: String? = nil, areaName: String? = nil, areaDisplayOrder: Int? = nil, updatedAt: Date, lifts: [LinkedLift]? = nil, images: [EntityImage]? = nil) {
         self.uuid = uuid
         self.name = name
         self.slug = slug
@@ -53,6 +55,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         self.areaName = areaName
         self.areaDisplayOrder = areaDisplayOrder
         self.updatedAt = updatedAt
+        self.lifts = lifts
         self.images = images
     }
 
@@ -70,6 +73,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         case areaName = "area_name"
         case areaDisplayOrder = "area_display_order"
         case updatedAt = "updated_at"
+        case lifts
         case images
     }
 
@@ -90,6 +94,7 @@ public struct SummerTrail: Sendable, Codable, Hashable {
         try container.encodeIfPresent(areaName, forKey: .areaName)
         try container.encodeIfPresent(areaDisplayOrder, forKey: .areaDisplayOrder)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(lifts, forKey: .lifts)
         try container.encodeIfPresent(images, forKey: .images)
     }
 }

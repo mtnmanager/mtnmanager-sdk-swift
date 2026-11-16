@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** | Display name of the terrain park. | 
 **slug** | **String** | URL-friendly name of the terrain park. | 
 **number** | **Int** | Optional terrain park number. | [optional] 
-**status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
+**status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **lastGroomed** | **Date** | When the terrain park was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. | [optional] 
 **groomedToday** | **Bool** | Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours). | 
 **snowSinceGroomedCm** | **Int** | New snow (cm) reported since &#x60;last_groomed&#x60;. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report. | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **areaDisplayOrder** | **Int** | Display order of the area this terrain park belongs to, if assigned, for sorting purposes. | [optional] 
 **features** | [TerrainParkFeature] | Features within this terrain park (jumps, boxes, rails, etc.). | 
 **updatedAt** | **Date** | When this terrain park or any of its features was last updated. | 
+**lifts** | [LinkedLift] | The lifts that give access to this terrain park, in lift display order.  Empty when none are set. | [optional] 
 **images** | [EntityImage] | Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

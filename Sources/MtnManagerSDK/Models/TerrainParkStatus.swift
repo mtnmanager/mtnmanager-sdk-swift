@@ -11,6 +11,7 @@ import Foundation
 public enum TerrainParkStatus: String, Sendable, Codable, CaseIterable, CaseIterableDefaultsLast {
     case `open` = "open"
     case closed = "closed"
+    case onHold = "on_hold"
     case unknown = "unknown"
     case unknownDefaultOpenApi = "unknown_default_open_api"
 }
