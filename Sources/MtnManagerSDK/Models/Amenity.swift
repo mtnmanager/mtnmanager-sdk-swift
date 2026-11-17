@@ -26,8 +26,6 @@ public struct Amenity: Sendable, Codable, Hashable {
     public var status: AmenityStatus
     /** Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated. */
     public var hasOperatingHours: Bool
-    /** Whether this amenity reports a status. When false, `status` is always  `unknown`. (It is also `unknown` while the resort doesn't track amenity  status at all.) */
-    public var hasStatus: Bool
     /** Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone. */
     public var opensAt: String?
     /** Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone. */
@@ -37,7 +35,7 @@ public struct Amenity: Sendable, Codable, Hashable {
     /** Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. */
     public var images: [EntityImage]?
 
-    public init(description: String, uuid: String, name: String, slug: String, category: AmenityCategory, website: String, status: AmenityStatus, hasOperatingHours: Bool, hasStatus: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
+    public init(description: String, uuid: String, name: String, slug: String, category: AmenityCategory, website: String, status: AmenityStatus, hasOperatingHours: Bool, opensAt: String? = nil, closesAt: String? = nil, schedules: [Schedule], images: [EntityImage]? = nil) {
         self.description = description
         self.uuid = uuid
         self.name = name
@@ -46,7 +44,6 @@ public struct Amenity: Sendable, Codable, Hashable {
         self.website = website
         self.status = status
         self.hasOperatingHours = hasOperatingHours
-        self.hasStatus = hasStatus
         self.opensAt = opensAt
         self.closesAt = closesAt
         self.schedules = schedules
@@ -62,7 +59,6 @@ public struct Amenity: Sendable, Codable, Hashable {
         case website
         case status
         case hasOperatingHours = "has_operating_hours"
-        case hasStatus = "has_status"
         case opensAt = "opens_at"
         case closesAt = "closes_at"
         case schedules
@@ -81,7 +77,6 @@ public struct Amenity: Sendable, Codable, Hashable {
         try container.encode(website, forKey: .website)
         try container.encode(status, forKey: .status)
         try container.encode(hasOperatingHours, forKey: .hasOperatingHours)
-        try container.encode(hasStatus, forKey: .hasStatus)
         try container.encodeIfPresent(opensAt, forKey: .opensAt)
         try container.encodeIfPresent(closesAt, forKey: .closesAt)
         try container.encode(schedules, forKey: .schedules)

@@ -15,6 +15,7 @@ public enum MarkerIcon: String, Sendable, Codable, CaseIterable, CaseIterableDef
     case skiSchool = "ski_school"
     case rentalShop = "rental_shop"
     case tubing = "tubing"
+    case skating = "skating"
     case daycare = "daycare"
     case ticketing = "ticketing"
     case lodge = "lodge"
